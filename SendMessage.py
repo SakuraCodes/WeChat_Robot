@@ -26,7 +26,7 @@ def PushBreakfast():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChatRobot\pic\breakfast.jpg',  # 图片
+        r'F:\!Code\Code_Python\WeChat-Robot\pic\breakfast.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -48,7 +48,7 @@ def PushLunch():
     ]
     # 发送文件
     files = [
-        # r'F:\!Code\Code_Python\WeChatRobot\pic\dinner.jpg',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\dinner.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -70,7 +70,7 @@ def PushTea():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChatRobot\pic\tea.jpg',  # 图片
+        r'F:\!Code\Code_Python\WeChat-Robot\pic\tea.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -89,11 +89,12 @@ def PushSupper():
         # '这是个早餐测试消息'
         # '晚上好！一天的忙碌过后，是时候用一顿丰盛的晚餐来放松自己了！🌙\n店铺已选好，就等你啦！\n🍛鮨·渔知精致料理\n🈵20返12\n🥘食光解馋坊\n🈵20返15\n🍲会飞不二(创新128广场店)\n🈵25返15\n🥙尝态·健康创意简餐\n🈵25返15\n🍳来一餐木桶饭第一档口\n🈵20返15\n霸王餐链接：👇\nhttps://6url.cn/C8XKHh\n————՞•・•՞————\n邀请好友吃霸王餐 领20R奖励'
         # '下班干饭，让我用美食驱赶一天的疲惫！\n\n🥘久久丫·鸭脖(古林店)\n🈵15返12\n\n兴宁桥烤鸡(邱隘店)\n🈵20返15\n\n食光解馋坊\n🈵20返15\n\n西北阁(炒饭·炒面·炒菜)\n🈵20返14\n\n高大乐桂林米粉(128广场店)\n🈵30返15\n\n[红包]『歪麦』成本价点外卖\n👉https://6url.cn/fEGtuw\n————՞•・•՞————\n [庆祝]上线参与0元许愿，点餐就把iPad、拍立得等开学礼包带回家！今天参与明天14：30开奖哦~详情入口：https://sourl.cn/PGDZa2'
-        '📣【吃晚餐啦】超值新品上线\n🥰麻辣烫🥘，猪脚饭🍱，轻食🥙，面食🍜...应有尽有\n\n🥓久久丫·鸭脖(古林店)\n🈵15返12\n—— —— —— —— ——\n🍲西北阁(炒饭·炒面·炒菜)\n🈵20返14\n—— —— —— —— ——\n🍗兴宁桥烤鸡(邱隘店)\n🈵20返15\n—— —— —— —— ——\n🍱食光解馋坊\n🈵20返15\n😍超低限时补贴，手慢无！👉6url.cn/fEGtuw\n🔥吃霸王餐0元许愿，赢取iPad、拍立得👉：sourl.cn/PGDZa2'
+        # '📣【吃晚餐啦】超值新品上线\n🥰麻辣烫🥘，猪脚饭🍱，轻食🥙，面食🍜...应有尽有\n\n🥓久久丫·鸭脖(古林店)\n🈵15返12\n—— —— —— —— ——\n🍲西北阁(炒饭·炒面·炒菜)\n🈵20返14\n—— —— —— —— ——\n🍗兴宁桥烤鸡(邱隘店)\n🈵20返15\n—— —— —— —— ——\n🍱食光解馋坊\n🈵20返15\n😍超低限时补贴，手慢无！👉6url.cn/fEGtuw\n🔥吃霸王餐0元许愿，赢取iPad、拍立得👉：sourl.cn/PGDZa2'
+        '回头客飙升的店铺，必须拿捏👇\n\n🥓久久丫·鸭脖(古林店)\n🈵15返12\n—— —— —— —— ——\n🍲西北阁(炒饭·炒面·炒菜)\n🈵20返14\n—— —— —— —— ——\n🍗兴宁桥烤鸡(邱隘店)\n🈵20返15\n—— —— —— —— ——\n🍱食光解馋坊\n🈵20返15\n😍超低限时补贴，手慢无！👉6url.cn/fEGtuw\n🔥吃霸王餐0元许愿，赢取iPad、拍立得👉：sourl.cn/PGDZa2'
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChatRobot\pic\快乐干饭.png',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\快乐干饭.png',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -101,7 +102,7 @@ def PushSupper():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            wx.SendFiles(filepath=files, who=l)
+            # wx.SendFiles(filepath=files, who=l)
 
 
 def PushSnack():
@@ -114,7 +115,7 @@ def PushSnack():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChatRobot\pic\Snack.png',  # 图片
+        r'F:\!Code\Code_Python\WeChat-Robot\pic\Snack.png',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -137,7 +138,7 @@ def PushActivity():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChatRobot\pic\activity.jpg',  # 图片
+        r'F:\!Code\Code_Python\WeChat-Robot\pic\activity.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -152,7 +153,7 @@ def PushActivity():
 # PushLunch()
 # PushTea()
 # PushSupper()
-PushActivity()
+# PushActivity()
 # PushSnack()
 
 # 定时执行任务
