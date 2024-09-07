@@ -26,7 +26,7 @@ def PushBreakfast():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChat-Robot\pic\breakfast.jpg',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\breakfast.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -34,7 +34,7 @@ def PushBreakfast():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            wx.SendFiles(filepath=files, who=l)
+            # wx.SendFiles(filepath=files, who=l)
 
 
 def PushLunch():
@@ -70,7 +70,7 @@ def PushTea():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChat-Robot\pic\tea.jpg',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\tea.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -78,7 +78,7 @@ def PushTea():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            wx.SendFiles(filepath=files, who=l)
+            # wx.SendFiles(filepath=files, who=l)
 
 
 def PushSupper():
@@ -121,8 +121,8 @@ def PushSnack():
     ]
     for l in listen_list:
         for m in message_list:
-            # wx.SendMsg(msg=m, who=l)
-            wx.AtAll(msg=m, who=l)
+            wx.SendMsg(msg=m, who=l)
+            # wx.AtAll(msg=m, who=l)
             wx.SendFiles(filepath=files, who=l)
 
 
