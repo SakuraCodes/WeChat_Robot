@@ -8,7 +8,10 @@ listen_list = [
     '宁波歪麦霸王餐福利群002',
     '宁波歪麦霸王餐福利群003',
     '宁波歪麦霸王餐福利群004',
-    '在宁波0-5元吃霸王餐-A8'
+    '在宁波0-5元吃霸王餐-A8',
+    '在宁波0-5元吃霸王餐-A9',
+    '宁波福利群-100',
+    '宁波福利群-101'
 ]
 
 # At人员列表
@@ -28,6 +31,7 @@ def PushBreakfast():
     # 发送文件
     files = [
         # r'F:\!Code\Code_Python\WeChat-Robot\pic\breakfast.jpg',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\breakfast.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -50,6 +54,7 @@ def PushLunch():
     # 发送文件
     files = [
         # r'F:\!Code\Code_Python\WeChat-Robot\pic\dinner.jpg',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\dinner.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -72,6 +77,7 @@ def PushTea():
     # 发送文件
     files = [
         # r'F:\!Code\Code_Python\WeChat-Robot\pic\tea.jpg',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\tea.jpg',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -96,6 +102,7 @@ def PushSupper():
     # 发送文件
     files = [
         # r'F:\!Code\Code_Python\WeChat-Robot\pic\快乐干饭.png',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\快乐干饭.png',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -116,7 +123,8 @@ def PushSnack():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChat-Robot\pic\Snack.png',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\Snack.png',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\Snack.png',  # 图片
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
@@ -139,14 +147,15 @@ def PushActivity():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChat-Robot\pic\activity.jpg',  # 图片
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\activity.jpg',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\activity.jpg'
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
     for l in listen_list:
         for m in message_list:
-            # wx.SendMsg(msg=m, who=l, at=at_list)
-            wx.AtAll(msg=m, who=l)
+            wx.SendMsg(msg=m, who=l)
+            # wx.AtAll(msg=m, who=l)
             wx.SendFiles(filepath=files, who=l)
 
 
@@ -158,13 +167,13 @@ def PushActivity():
 # PushSnack()
 
 # 定时执行任务
-schedule.every().day.at("09:00:00").do(PushBreakfast)
+schedule.every().day.at("08:30:00").do(PushBreakfast)
 schedule.every().day.at("10:00:00").do(PushActivity)
 schedule.every().day.at("10:30:00").do(PushLunch)
-schedule.every().day.at("14:30:00").do(PushTea)
+schedule.every().day.at("14:00:00").do(PushTea)
 schedule.every().day.at("16:30:00").do(PushActivity)
-schedule.every().day.at("17:30:00").do(PushSupper)
-schedule.every().day.at("22:30:00").do(PushSnack)
+schedule.every().day.at("17:00:00").do(PushSupper)
+schedule.every().day.at("21:00:00").do(PushSnack)
 
 while True:
     schedule.run_pending()
