@@ -9,7 +9,8 @@
 ### [**itchat-uos**](https://github.com/why2lyj/ItChat-UOS)
 - [**基于ItChat-UOS的个人微信机器人**](https://linux.do/t/topic/34664)
 
-### [**wechaty-puppet-xp**](https://wechaty.juzibot.com/64d6102e41632a36b5543485.html)
+### [puppet-xp](https://github.com/wechaty/puppet-xp)
+- [**wechaty-puppet-xp**](https://wechaty.juzibot.com/64d6102e41632a36b5543485.html)
 
 ### [**wechaty-puppet-wechat**](https://www.npmjs.com/package/wechaty-puppet-wechat)
 - [**python-wechaty**](https://wechaty.readthedocs.io/zh-cn/latest/)
