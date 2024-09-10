@@ -149,8 +149,8 @@ def PushActivity():
     ]
     # 发送文件
     files = [
-        r'F:\!Code\Code_Python\WeChat-Robot\pic\activity.jpg',  # 图片
-        # r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\教师节.png'
+        # r'F:\!Code\Code_Python\WeChat-Robot\pic\activity.jpg',  # 图片
+        r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\activity.jpg'
         # r'C:\Users\user\Desktop\2.txt',  # 文件
         # r'C:\Users\user\Desktop\3.mp4'  # 视频
     ]
