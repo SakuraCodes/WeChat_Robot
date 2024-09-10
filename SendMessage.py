@@ -39,7 +39,7 @@ def PushBreakfast():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            # wx.SendFiles(filepath=files, who=l)
+            wx.SendFiles(filepath=files, who=l)
 
 
 def PushLunch():
@@ -62,7 +62,7 @@ def PushLunch():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            # wx.SendFiles(filepath=files, who=l)
+            wx.SendFiles(filepath=files, who=l)
 
 
 def PushTea():
@@ -85,7 +85,7 @@ def PushTea():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            # wx.SendFiles(filepath=files, who=l)
+            wx.SendFiles(filepath=files, who=l)
 
 
 def PushSupper():
@@ -111,7 +111,7 @@ def PushSupper():
         for m in message_list:
             wx.SendMsg(msg=m, who=l)
             # wx.AtAll(msg=m, who=l)
-            # wx.SendFiles(filepath=files, who=l)
+            wx.SendFiles(filepath=files, who=l)
 
 
 def PushSnack():
