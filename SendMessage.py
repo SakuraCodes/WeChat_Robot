@@ -98,7 +98,7 @@ if __name__ == '__main__':
             # '嘿！到点了别忘了点外卖\n💻工作再多 干饭要紧\n————՞•・•՞————\n📣中秋大促【到店专享】超划算💰\n①、麦当劳大饱口福三件套到手仅19.9元！\n\n②、瑞幸咖啡全网最低价10.49元！\n \n福利尽在歪麦霸王餐，速速囤卷吧❗\n👉6url.cn/C8XKHh'
         ]
         filepath = [
-            r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\activity.jpg'
+            r'C:\Users\MM\PycharmProjects\WeChat-Robot\pic\参与活动挑战赛入口.jpg'
         ]
         PushMsg(msg_list, filepath)
 
