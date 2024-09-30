@@ -23,7 +23,3 @@ def rand_shop(categories):
         cashback = row["满返"]
         shop_info += f"\n{name}\n{cashback}"
     return shop_info
-
-
-# a = link + random.choice(delim) + activity
-# print(a)
