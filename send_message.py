@@ -16,7 +16,7 @@ delim = [
 
 link = "\n------------------\n点击链接选店啵👉s.c1ns.cn/i14hj\n"
 
-activity = "\n🔥国庆团长赛火热进行中！🔥\n🧧邀新赢12-70元现金红包🧧\n💎点餐下单送30天会员💎\n👉活动入口：https://s.c1ns.cn/9XnXV"
+activity = "\n🔥点餐下单送30天会员💎或10元现金🧧\n👉活动入口：https://s.c1ns.cn/9XnXV"
 
 
 # 发送对象列表
