@@ -2,6 +2,7 @@ from wxauto import WeChat
 import schedule
 import time
 import random
+import datetime
 from select_category import rand_shop
 
 delim = [
@@ -16,7 +17,17 @@ delim = [
 
 link = "\n------------------\n点击链接选店啵👉s.c1ns.cn/i14hj\n"
 
-activity = "\n🔥点餐下单送30天会员💎或10元现金🧧\n👉活动入口：https://s.c1ns.cn/9XnXV"
+
+# 判断今日为周三，则对activity重新赋值
+def is_wednesday():
+    if datetime.datetime.today().weekday() == 2:
+        activity = "\n🔥点餐下单送30天会员💎或10元现金🧧\n👉活动入口：https://s.c1ns.cn/9XnXV\n\n🌟歪麦周三霸王日，将额外赠送每位用户3天会员，数量有限，先到先得哦~\n歪麦APP-兑换专区输入口令“歪麦周三霸王日”兑换"
+        return activity
+    else:
+        activity = (
+            "\n🔥点餐下单送30天会员💎或10元现金🧧\n👉活动入口：https://s.c1ns.cn/9XnXV"
+        )
+        return activity
 
 
 # 发送对象列表
@@ -62,7 +73,7 @@ def PushBreakfast():
         + rand_shop(category)
         + link
         + random.choice(delim)
-        + activity
+        + is_wednesday()
     ]
     # 文件列表
     filepath = [
@@ -80,7 +91,7 @@ def PushLunch():
         + rand_shop(category)
         + link
         + random.choice(delim)
-        + activity
+        + is_wednesday()
     ]
     filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\dinner.jpg"]
     PushMsg(msg_list, filepath)
@@ -93,7 +104,7 @@ def PushTea():
         + rand_shop(category)
         + link
         + random.choice(delim)
-        + activity
+        + is_wednesday()
     ]
     filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\tea.jpg"]
     PushMsg(msg_list, filepath)
@@ -107,7 +118,7 @@ def PushSupper():
         + rand_shop(category)
         + link
         + random.choice(delim)
-        + activity
+        + is_wednesday()
     ]
     filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\dinner.jpg"]
     PushMsg(msg_list, filepath)
@@ -120,7 +131,7 @@ def PushSnack():
         + rand_shop(category)
         + link
         + random.choice(delim)
-        + activity
+        + is_wednesday()
         + "\n🔔宵夜订单记得要提交哦~~"
     ]
     filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\snack.jpg"]
