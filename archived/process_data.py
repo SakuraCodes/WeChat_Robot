@@ -16,11 +16,18 @@ def remove_dot_zero(text):
 def take_the_first_match(text):
     # 匹配规则
     pattern = "满\d+返\d+"
-    return re.findall(pattern, text)[0]
+    matches = re.findall(pattern, text)
+    # 排除无匹配结果
+    if matches:
+        return matches[0]
+    else:
+        return None
 
 
 df["满返"] = df["满返"].apply(remove_dot_zero)
 df["满返"] = df["满返"].apply(take_the_first_match)
+df = df.dropna(subset=["满返"])
+df = df.dropna(subset=["经营品类"])
 
 # 将处理数据写入Excel文件
 df.to_excel("./data/result.xlsx", index=False)

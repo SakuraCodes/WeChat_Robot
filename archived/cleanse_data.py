@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 读取Excel文件
-df1 = pd.read_excel("./data/发布计划.xlsx")
+df1 = pd.read_excel("./data/发布计划导出.xlsx")
 df2 = pd.read_excel("./data/商家发布.xlsx")
 
 # 提取需要的列
