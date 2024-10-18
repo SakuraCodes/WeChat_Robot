@@ -1,8 +1,9 @@
-from wxauto import WeChat
-import schedule
+import os
 import time
 import random
 import datetime
+import schedule
+from wxauto import WeChat
 from select_category import rand_shop
 
 delim = [
@@ -28,6 +29,11 @@ def is_wednesday():
             "\n🔥点餐下单送30天会员💎或10元现金🧧\n👉活动入口：https://s.c1ns.cn/9XnXV"
         )
         return activity
+
+
+# 获取pic文件夹绝对路径
+current_file_dir = os.path.dirname(os.path.abspath(__file__))
+pic_file_dir = os.path.join(current_file_dir, "pic")
 
 
 # 发送对象列表
@@ -76,10 +82,7 @@ def PushBreakfast():
         + is_wednesday()
     ]
     # 文件列表
-    filepath = [
-        # r'F:\!Code\Code_Python\WeChat-Robot\pic\breakfast.jpg'
-        r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\breakfast.jpg"
-    ]
+    filepath = [os.path.join(pic_file_dir, "breakfast.jpg")]
     PushMsg(msg_list, filepath)
 
 
@@ -93,7 +96,7 @@ def PushLunch():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\dinner.jpg"]
+    filepath = [os.path.join(pic_file_dir, "dinner.jpg")]
     PushMsg(msg_list, filepath)
 
 
@@ -106,7 +109,7 @@ def PushTea():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\tea.jpg"]
+    filepath = [os.path.join(pic_file_dir, "tea.jpg")]
     PushMsg(msg_list, filepath)
 
 
@@ -120,7 +123,7 @@ def PushSupper():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\dinner.jpg"]
+    filepath = [os.path.join(pic_file_dir, "dinner.jpg")]
     PushMsg(msg_list, filepath)
 
 
@@ -134,7 +137,7 @@ def PushSnack():
         + is_wednesday()
         + "\n🔔宵夜订单记得要提交哦~~"
     ]
-    filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\snack.jpg"]
+    filepath = [os.path.join(pic_file_dir, "snack.jpg")]
     PushMsg(msg_list, filepath)
 
 
@@ -142,7 +145,7 @@ def PushActivity():
     msg_list = [
         # "🧧外卖通用神券红包\n美团👉s.c1ns.cn/Vx9J5\n饿了么👉s.c1ns.cn/c25G3\ntips：神券红包和霸王餐可以同时减免呦~\n\n🔗霸王餐链接：s.c1ns.cn/i14hj\n------------------\n🎉【活动挑战赛】🎁\n• 🔥迎国庆限时团长赛，7天邀新7人赢70元红包🧧\n• 🔥参与吃货挑战赛，30天累计10单赢10元红包🧧\n• 🔥点餐返会员挑战赛，30天累计10单赢30天会员💎\n\n👉活动入口：点击霸王餐链接-点击赚钱-点击活动二海报，即可参与挑战赛"
     ]
-    filepath = [r"C:\Users\MM\PycharmProjects\WeChat-Robot\pic\acti.jpg"]
+    filepath = [os.path.join(pic_file_dir, "acti.jpg")]
     PushMsg(msg_list, filepath)
 
 
