@@ -19,7 +19,7 @@ def remove_dot_zero(text):
 # 取最后一个匹配结果
 def take_the_last_match(text):
     # 匹配规则
-    pattern = "满\d+返\d+"
+    pattern = "满\d+返\d+|每单返利\d+"
     matches = re.findall(pattern, text)
     # 排除无匹配结果
     if matches:
