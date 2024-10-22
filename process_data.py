@@ -5,31 +5,54 @@ import pandas as pd
 df = pd.read_excel("./data/门店发布统计.xlsx")
 
 # 提取需要的列
-selected_df = df.loc[:, ["店铺名称", "经营品类", "返利信息"]]
+selected_df = df.loc[:, ["店铺名称", "经营品类", "返利信息", "满返差额"]]
+
+
+# 使用正则表达式去除特殊字符
+def cleaned_shopname(value):
+    pattern_replace = r"[\n\r\t]"
+    # 返回使用替换模式在原始文本中去除特殊字符
+    return re.sub(pattern_replace, r"", value)
 
 
 # \d+匹配任意数字，\.转义小数点
-# 应用正则表达式去除.00
-def remove_dot_zero(text):
+# 使用正则表达式去除.00
+def remove_dot_zero(value):
     pattern_replace = r"(\d+)\.00"
     # 返回使用替换模式在原始文本中去除.00
-    return re.sub(pattern_replace, r"\1", text)
+    return re.sub(pattern_replace, r"\1", value)
 
 
-# 取最后一个匹配结果
-def take_the_last_match(text):
+# 使用正则表达式匹配第一个结果
+def rebateinfo_first_match(value):
     # 匹配规则
     pattern = "满\d+返\d+|每单返利\d+"
-    matches = re.findall(pattern, text)
+    matches = re.findall(pattern, value)
     # 排除无匹配结果
     if matches:
-        return matches[-1]
+        return matches[0]
+        # return matches[-1]
     else:
         return None
 
 
+# 去除"店铺名称"列中的特殊字符
+selected_df["店铺名称"] = selected_df["店铺名称"].apply(cleaned_shopname)
+
+# 去除"返利信息"列中的.00
 selected_df["返利信息"] = selected_df["返利信息"].apply(remove_dot_zero)
-selected_df["返利信息"] = selected_df["返利信息"].apply(take_the_last_match)
+# 提取"返利信息"列中的第一个匹配结果
+selected_df["返利信息"] = selected_df["返利信息"].apply(rebateinfo_first_match)
+
+
+# 将"满返差额"列根据";"拆分成列表并取第一个元素
+selected_df["满返差额"] = selected_df["满返差额"].str.split(";").str[0]
+# 转换"满返差额"列为数值类型(默认float类型)
+selected_df["满返差额"] = pd.to_numeric(
+    selected_df["满返差额"], errors="coerce"
+)  # errors="coerce" 会将无法转换的值设置为NaN
+
+# 删除"返利信息"列有缺失值的行
 cleaned_df = selected_df.dropna(subset=["返利信息"])
 
 # 将处理数据写入Excel文件
