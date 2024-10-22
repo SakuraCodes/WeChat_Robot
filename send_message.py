@@ -33,15 +33,15 @@ def is_wednesday():
 
 # 获取pic文件夹绝对路径
 current_file_dir = os.path.dirname(os.path.abspath(__file__))
-pic_file_dir = os.path.join(current_file_dir, "pic")
+pic_files = os.path.join(current_file_dir, "pic")
 
 
 # 发送对象列表
 listen_atall_list = [
-    # '测试群'
+    # "传输助手"
 ]
 listen_list = [
-    # "测试群"
+    # "传输助手"
     "在宁波0-5元吃霸王餐-A3",
     "【歪麦】宁波0-5元吃外卖-A1",
     "【歪麦】宁波0-5元吃外卖-A2",
@@ -51,6 +51,23 @@ listen_list = [
     "宁波歪麦霸王餐福利群003",
     "宁波歪麦霸王餐福利群004",
 ]
+
+
+# 随机返回指定文件夹中的图片路径
+def random_image_path(folder_path):
+    # 获取文件夹中的所有文件
+    all_files = os.listdir(folder_path)
+    # 筛选出图片文件(根据需要调整图片格式)
+    image_files = [
+        f for f in all_files if f.endswith((".jpg", ".jpeg", ".png", ".bmp"))
+    ]
+    # 如果没有找到图片文件,返回None
+    if not image_files:
+        return None
+    # 随机选择一张图片
+    random_image = random.choice(image_files)
+    # 拼接完整路径
+    return os.path.join(folder_path, random_image)
 
 
 def PushMsg(msg_list, filepath):
@@ -79,7 +96,7 @@ def PushBreakfast():
         + is_wednesday()
     ]
     # 文件列表
-    filepath = [os.path.join(pic_file_dir, "breakfast.jpg")]
+    filepath = [random_image_path(os.path.join(pic_files, "breakfast"))]
     PushMsg(msg_list, filepath)
 
 
@@ -93,7 +110,7 @@ def PushLunch():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [os.path.join(pic_file_dir, "dinner.jpg")]
+    filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
     PushMsg(msg_list, filepath)
 
 
@@ -106,7 +123,7 @@ def PushTea():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [os.path.join(pic_file_dir, "tea.jpg")]
+    filepath = [random_image_path(os.path.join(pic_files, "afternoontea"))]
     PushMsg(msg_list, filepath)
 
 
@@ -120,7 +137,7 @@ def PushSupper():
         + random.choice(delim)
         + is_wednesday()
     ]
-    filepath = [os.path.join(pic_file_dir, "dinner.jpg")]
+    filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
     PushMsg(msg_list, filepath)
 
 
@@ -134,7 +151,7 @@ def PushSnack():
         + is_wednesday()
         + "\n🔔宵夜订单记得要提交哦~~"
     ]
-    filepath = [os.path.join(pic_file_dir, "snack.jpg")]
+    filepath = [random_image_path(os.path.join(pic_files, "snack"))]
     PushMsg(msg_list, filepath)
 
 
@@ -142,7 +159,7 @@ def PushActivity():
     msg_list = [
         # "🧧外卖通用神券红包\n美团👉s.c1ns.cn/Vx9J5\n饿了么👉s.c1ns.cn/c25G3\ntips：神券红包和霸王餐可以同时减免呦~\n\n🔗霸王餐链接：s.c1ns.cn/i14hj\n------------------\n🎉【活动挑战赛】🎁\n• 🔥迎国庆限时团长赛，7天邀新7人赢70元红包🧧\n• 🔥参与吃货挑战赛，30天累计10单赢10元红包🧧\n• 🔥点餐返会员挑战赛，30天累计10单赢30天会员💎\n\n👉活动入口：点击霸王餐链接-点击赚钱-点击活动二海报，即可参与挑战赛"
     ]
-    filepath = [os.path.join(pic_file_dir, "acti.jpg")]
+    filepath = [os.path.join(pic_files, "activity.jpg")]
     PushMsg(msg_list, filepath)
 
 
