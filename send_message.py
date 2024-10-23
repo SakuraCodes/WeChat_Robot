@@ -6,6 +6,108 @@ import schedule
 from wxauto import WeChat
 from select_category import rand_shop
 
+breakfast_title = [
+    "🍂秋高气爽，来碗热气腾腾的🍚吧！",
+    "吃完早餐，又是元气满满的一天。",
+    "好好吃个早餐‹🍞🥨🥖🍳›",
+    "又是热爱生活的一天🌞",
+    "🥛今天是早餐𝑝𝑙𝑜𝑔🥚",
+    "🍞 𓏼🥛早餐时间到了，请选择你喜欢的食物",
+    "在每一个早上和自己说加油ᵎᵎᵎ🌞",
+    "早餐带来的幸福感✌︎",
+    "    🥯˃ꌂ˂ 🥯    ",
+    "◡̈ 🔆 𝙈𝙤𝙧𝙣𝙞𝙣𝙜 💐",
+    "🌿开启幸运的一天☻",
+    "𖠚ᐝ早起的鸟儿𓅯ˎˊ˗",
+    "🍞🥯面包脑袋૮ ´• •` ა",
+    "早八人ᜊ ᶻᶻᶻ困",
+    "早起的意义是为了吃早餐🥨🥖",
+]
+
+dinner_title = [
+    "*𝑭𝒐𝒐𝒅𝒊𝒆 𝒍𝒊𝒔𝒕🧾🫕🌮",
+    "日子不紧不慢 每天好好吃饭",
+    "𓌉◯𓇋 ʜᴀ͟ᴘ͟ᴘ͟ʏ ᴇᴠᴇʀʏᴅᴀʏ̆̈",
+    "常言道：“食食物者为俊杰”🍔🍟🍗🍕",
+    "ʔ•̫͡•ʕ ·𝙃𝙤𝙩𝙥𝙤𝙩·🥘“快乐的标配,火锅和姐妹",
+    "𝙄𝙣𝙩𝙚𝙧𝙚𝙨𝙩𝙞𝙣𝙜🍤🍣“吃得饱想的少 天天开心没烦恼”",
+    "ʔ•̫͡•ʕᶠᵃᵗ ᶠᵃᵗ ᶠᵃᵗ🥩",
+    "一年四季：春肥 夏胖 秋膘 冬圆",
+    ": / 𝙁𝙤𝙤𝙙𝙞𝙚𝙚𝙚𝙚 𓀠𓀤𓀥𓀫",
+    "‘‘ 叮🔔！双下巴续费成功 ’’🥢",
+    "𝑩𝒂𝒓𝒃𝒆𝒄𝒖𝒆 / 🥓🥘",
+    "把眼睛留给风景 把体重留给美食",
+    "☾˚‧º气氛都到这了 发个朋友圈吧 ⍥⃝",
+    "˗ˋˏ 🍻 ˎˊ˗𝐞𝐚𝐭𝐭𝐭𝐭…肚子喂饱•可爱到老⌇",
+    "˗ˋˏ 𝗙𝗼𝗼𝗱𝗶𝗲🥯🥢ˎˊ˗",
+    "别和体重斤斤计较 吃得开心就好",
+    "🍨🍯不要急 好吃慢喝来日方长🥛",
+    "🥢𝑻𝒐𝒈𝒆𝒕𝒉𝒆𝒓👫",
+    "爱吃的女孩子运气不会差·因为食来运转🥘",
+    "✏️今天依然是碌碌无为的知食分子",
+    "ॱଳ做一枚快乐的吃货🥧",
+    ".✐  Føøđ  ᵕ̈ 吃喝小日常",
+    "“小肚 小肚” “ 我在🙋🏻‍♂”",
+    "*ʚ◡̈⃝ɞ晚胖不如早胖",
+    ": / 𝙁𝙤𝙤𝙙𝙞𝙚𝙚𝙚𝙚 𓀠𓀤𓀥𓀫",
+    "‘‘ 叮🔔！双下巴续费成功 ’’🥢",
+    "人生幸事, 八九不离食 🍱",
+    "闺蜜👭就是：一起吃饭一起胖 ♡̷🍹🧀️🍮🍣🍕",
+    "嘴巴一张 下吧变双~`oˊ~走进漫画风的一天",
+    "𓌉◯𓇋 ︎ 今日菜单📝",
+    "🥘∙咕噜咕噜⑉",
+    "𝐅 🍔🍔 𝐝𝐝𝐝𝐝𝐝𝐝𝐝𝐝𝐝𝐝𝐝",
+    "恰飯◍˃ᵕ˂◍",
+]
+
+tea_title = [
+    "🍮🌈𝖬𝖾𝖾𝗍𝗂𝗇𝗀▸ʚ🍰ɞ꙳⋆🍜\n🍹ɞ⋆慵懒下午茶时光♡゛🍹",
+    "你有一份甜甜日常请查收~🍰",
+    "下午茶𝘁𝗶𝗺𝗲₍˄·͈༝·͈˄*₎◞ ̑̑☕",
+    "☕️ ᴍᴏᴍᴇɴᴛ静谧的下午茶时光",
+    "没有文案,只想续杯🥤",
+    "甜茶记🍓➕🍰🟰☕️",
+    "偷得浮生半日闲,轻煮岁月慢煮茶☕",
+    "📷相机里午茶的小碎片☕",
+    "「☕」▸COFFEE TIME",
+    "咖啡一杯精神百倍( ･⊝･∞)☕️",
+    "•͈ᴗ•͈⸝⸝⸝甜品治愈一切 ˁ῁̬ˀ",
+    "ᵕ̈下午茶時間🍸🧈☕️",
+    "🍮·热量𝚋𝚘𝚘𝚖 𝚍𝚊𝚢💥.ᐟ",
+    "瑞了个幸⋆⁺☕️♪🔖ᯤ🤎",
+    "🌈我的快乐多巴胺🍹🥧𓌉𓇋",
+    "🍰•ᴗ•🥄从吃小蛋糕开始幸福‧₊˚",
+    "🍮°₊ 焦糖布丁⟢🥚₊⋆🥛˚⁺ 🍯 ഒ",
+    "🐰‧˖⁺🧁⁺˚ 播放幸福正片🧈𓈒꙳⋆ 🍧",
+    "🧁 🥂 🇭 🇦 🇵 🇵 🇾 下午茶️时光🙋‍♀️",
+    "🍨甜食配方：50%快乐+50%脂肪 𓂂 𓋜",
+]
+
+snack_title = [
+    "“尝尝酒酒，瓶瓶安安”",
+    "ᵕ̈ ɴɪᴄᴇ 🍻 ᵕ̈\n“不负时光，与友相聚”\n🍺(ˊᗜˋ*)",
+    "🌃夜生活才刚刚开始~🥠\n啤酒🍺烧烤🍗不能少！",
+    "🍖· 今日☑",
+    "📷｜烧烤篇",
+    "夜宵｜自由🅱️🅱️𝐐",
+    "“搞点夜宵𝟳𝟳𝟴🍺🦞”",
+    "❀͈ “开心就要咔̾滋̾咔̾滋̾”",
+    "🥓 % 今·日·热·量：9̺͆9̺͆%̺͆",
+    "好胖友 ˃̶͈🐽˂̶͈",
+    "Barbecue.🍻🍢🍗🍺",
+    "嗝～烤肉滋滋上线🔥",
+    "串串不贵，但很对胃",
+    "🦪🍤🥓烧烤就是0.5慢放的快乐𝗶𝗻𝗴",
+    "🥓 :𝙙𝙖𝙮 ²⁰²⁴‽",
+    "开心有好多种，燒烤是第一种🍗🍖🌯🍢🍡🍆",
+    "“滋̾滋̾滋̾，冒香͂味͂的夜间快͝乐͝”",
+    "ʜᵃᵖᵖᵞ •多烤两串🍡🍢⚘",
+    "🍖𓂂𓈒𓏸 “香迷糊了”😛💭",
+    "🍺🍗烧烤配啤酒✿.",
+    "烧烤🍱🍢🍻",
+    "ᶠᵃᵗ🍯总要留下长肉的证据˙Ꙫ˙",
+]
+
 delim = [
     "————՞•・•՞————",
     "—— ฅ՞••՞ฅ♥ ——",
@@ -89,7 +191,8 @@ def PushBreakfast():
     category = ["⾯粉粥包"]
     # 消息列表
     msg_list = [
-        "🍂秋高气爽，来碗热气腾腾的🍚吧！\n"
+        random.choice(breakfast_title)
+        + "\n"
         + rand_shop(category)
         + link
         + random.choice(delim)
@@ -100,11 +203,12 @@ def PushBreakfast():
     PushMsg(msg_list, filepath)
 
 
-def PushLunch():
+def PushDinner():
     category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
     msg_list = [
         # "肯德基星期四，疯狂不止一点点！\n\n🍗 2桶20翅，疯狂美味不停歇！\n💰 61.8元，超值优惠等你来！\n🛵 配送费半价，歪麦平台让你轻松享美食！\n"
-        "肚子里的馋🐛在抗议啦，快去投喂它吧！\n"
+        random.choice(dinner_title)
+        + "\n"
         + rand_shop(category)
         + link
         + random.choice(delim)
@@ -117,7 +221,8 @@ def PushLunch():
 def PushTea():
     category = ["水果果切", "奶茶甜点", "咖啡"]
     msg_list = [
-        "🍮🌈𝖬𝖾𝖾𝗍𝗂𝗇𝗀▸ʚ🍰ɞ꙳⋆🍜\n🍹ɞ⋆慵懒下午茶时光♡゛🍹\n"
+        random.choice(tea_title)
+        + "\n"
         + rand_shop(category)
         + link
         + random.choice(delim)
@@ -127,24 +232,11 @@ def PushTea():
     PushMsg(msg_list, filepath)
 
 
-def PushSupper():
-    category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
-    msg_list = [
-        # "肯德基星期四，疯狂不止一点点！\n\n🍗 2桶20翅，疯狂美味不停歇！\n💰 61.8元，超值优惠等你来！\n🛵 配送费半价，歪麦平台让你轻松享美食！\n"
-        "🍱晚餐想吃点什么特别的呢？\n🍤🍛🍗🥘🍲🥙🍢🍔\n"
-        + rand_shop(category)
-        + link
-        + random.choice(delim)
-        + is_wednesday()
-    ]
-    filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
-    PushMsg(msg_list, filepath)
-
-
 def PushSnack():
     category = ["特色小吃", "其他", "烧烤夜宵", "异国料理"]
     msg_list = [
-        "🌃夜生活才刚刚开始~🥠\n啤酒🍺烧烤🍗不能少！\n"
+        random.choice(snack_title)
+        + "\n"
         + rand_shop(category)
         + link
         + random.choice(delim)
@@ -166,19 +258,18 @@ def PushActivity():
 if __name__ == "__main__":
 
     # PushBreakfast()
-    # PushLunch()
+    # PushDinner()
     # PushTea()
-    # PushSupper()
     # PushSnack()
     # PushActivity()
 
     # 定时执行任务
     schedule.every().day.at("08:30:00").do(PushBreakfast)
     # schedule.every().day.at("10:00:00").do(PushActivity)
-    schedule.every().day.at("10:30:00").do(PushLunch)
+    schedule.every().day.at("10:30:00").do(PushDinner)
     schedule.every().day.at("14:00:00").do(PushTea)
     # schedule.every().day.at("16:30:00").do(PushActivity)
-    schedule.every().day.at("17:00:00").do(PushSupper)
+    schedule.every().day.at("17:00:00").do(PushDinner)
     schedule.every().day.at("21:00:00").do(PushSnack)
 
     while True:
