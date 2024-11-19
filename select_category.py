@@ -1,5 +1,7 @@
-import pandas as pd
+# -*- coding: utf-8 -*-
 import random
+
+import pandas as pd
 
 # 读取Excel文件
 df = pd.read_excel("./data/result.xlsx")
