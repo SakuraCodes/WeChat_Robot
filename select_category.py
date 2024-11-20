@@ -7,7 +7,12 @@ import pandas as pd
 df = pd.read_excel("./data/result.xlsx")
 
 
-def rand_shop(categories):
+def rand_shop(categories: list) -> str:
+    """
+    根据给定品类输出推荐店铺
+    :param categories: 品类列表
+    :return: 推荐店铺信息
+    """
     # 确保categories是列表类型，以便可以处理单个或多个品类的情况
     if not isinstance(categories, list):
         categories = [categories]

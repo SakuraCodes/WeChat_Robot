@@ -10,23 +10,34 @@ df = pd.read_excel("./data/门店发布统计.xlsx")
 selected_df = df.loc[:, ["店铺名称", "经营品类", "返利信息", "满返差额"]]
 
 
-# 使用正则表达式去除特殊字符
-def cleaned_shopname(value):
+def cleaned_shopname(value: str) -> str:
+    """
+    使用正则表达式去除特殊字符
+    :param value: 待处理的文本
+    :return: 去除特殊字符的文本
+    """
     pattern_replace = r"[\n\r\t]"
     # 返回使用替换模式在原始文本中去除特殊字符
     return re.sub(pattern_replace, r"", value)
 
 
-# \d+匹配任意数字，\.转义小数点
-# 使用正则表达式去除.00
-def remove_dot_zero(value):
+def remove_dot_zero(value: str) -> str:
+    """
+    使用正则表达式去除.00 (\d+匹配任意数字，\.转义小数点)
+    :param value: 待处理的文本
+    :return: 去除.00的文本
+    """
     pattern_replace = r"(\d+)\.00"
     # 返回使用替换模式在原始文本中去除.00
     return re.sub(pattern_replace, r"\1", value)
 
 
-# 使用正则表达式匹配第一个结果
-def rebateinfo_first_match(value):
+def rebateinfo_first_match(value: str) -> str | None:
+    """
+    使用正则表达式匹配第一个结果
+    :param value: 待匹配的文本
+    :return: 匹配到的结果
+    """
     # 匹配规则
     pattern = "满\d+返\d+|每单返利\d+"
     matches = re.findall(pattern, value)

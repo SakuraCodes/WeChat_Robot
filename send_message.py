@@ -153,10 +153,10 @@ pic_files = os.path.join(current_file_dir, "pic")
 
 
 # 发送对象列表
-listen_atall_list = [
+LISTEN_ATALL_LIST = [
     # "传输助手"
 ]
-listen_list = [
+LISTEN_LIST = [
     # "传输助手"
     "在宁波0-5元吃霸王餐-A3",
     "【歪麦】宁波0-5元吃外卖-A1",
@@ -169,8 +169,12 @@ listen_list = [
 ]
 
 
-# 随机返回指定文件夹中的图片路径
-def random_image_path(folder_path):
+def random_image_path(folder_path: str) -> str | None:
+    """
+    随机返回指定文件夹中的图片路径
+    :param folder_path: 指定文件夹路径
+    :return: 指定文件夹路径中的图片路径
+    """
     # 获取文件夹中的所有文件
     all_files = os.listdir(folder_path)
     # 筛选出图片文件(根据需要调整图片格式)
@@ -186,22 +190,32 @@ def random_image_path(folder_path):
     return os.path.join(folder_path, random_image)
 
 
-def PushMsg(msg_list, filepath):
+def PushMsg(msg_list: list, filepath: list[str | None]) -> None:
+    """
+    遍历发送消息
+    :param msg_list: 发送消息列表
+    :param filepath: 发送文件路径列表
+    :return:
+    """
     # 获取微信窗口对象
     wx = WeChat()
     # 切换到聊天页面
     wx.SwitchToChat()
-    for la in listen_atall_list:
+    for la in LISTEN_ATALL_LIST:
         for m in msg_list:
             wx.AtAll(msg=m, who=la)
             wx.SendFiles(filepath=filepath, who=la)
-    for l in listen_list:
+    for l in LISTEN_LIST:
         for m in msg_list:
             wx.SendMsg(msg=m, who=l)
             wx.SendFiles(filepath=filepath, who=l)
 
 
-def PushBreakfast():
+def PushBreakfast() -> None:
+    """
+    推送早餐消息
+    :return:
+    """
     category = ["⾯粉粥包"]
     # 消息列表
     msg_list = [
@@ -217,7 +231,11 @@ def PushBreakfast():
     PushMsg(msg_list, filepath)
 
 
-def PushDinner():
+def PushDinner() -> None:
+    """
+    推送正餐消息
+    :return:
+    """
     category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
     msg_list = [
         # "肯德基星期四，疯狂不止一点点！\n\n🍗 2桶20翅，疯狂美味不停歇！\n💰 61.8元，超值优惠等你来！\n🛵 配送费半价，歪麦平台让你轻松享美食！\n"
@@ -232,7 +250,11 @@ def PushDinner():
     PushMsg(msg_list, filepath)
 
 
-def PushTea():
+def PushTea() -> None:
+    """
+    推送下午茶消息
+    :return:
+    """
     category = ["水果果切", "奶茶甜点", "咖啡"]
     msg_list = [
         random.choice(TEA_TITLE)
@@ -246,7 +268,11 @@ def PushTea():
     PushMsg(msg_list, filepath)
 
 
-def PushSnack():
+def PushSnack() -> None:
+    """
+    推送宵夜消息
+    :return:
+    """
     category = ["特色小吃", "其他", "烧烤夜宵", "异国料理"]
     msg_list = [
         random.choice(SNACK_TITLE)
@@ -261,7 +287,11 @@ def PushSnack():
     PushMsg(msg_list, filepath)
 
 
-def PushActivity():
+def PushActivity() -> None:
+    """
+    推送活动消息
+    :return:
+    """
     msg_list = [
         # "🧧外卖通用神券红包\n美团👉s.c1ns.cn/Vx9J5\n饿了么👉s.c1ns.cn/c25G3\ntips：神券红包和霸王餐可以同时减免呦~\n\n🔗霸王餐链接：s.c1ns.cn/i14hj\n------------------\n🎉【活动挑战赛】🎁\n• 🔥迎国庆限时团长赛，7天邀新7人赢70元红包🧧\n• 🔥参与吃货挑战赛，30天累计10单赢10元红包🧧\n• 🔥点餐返会员挑战赛，30天累计10单赢30天会员💎\n\n👉活动入口：点击霸王餐链接-点击赚钱-点击活动二海报，即可参与挑战赛"
     ]
