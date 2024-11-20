@@ -190,7 +190,7 @@ def random_image_path(folder_path: str) -> str | None:
     return os.path.join(folder_path, random_image)
 
 
-def PushMsg(msg_list: list, filepath: list[str | None]) -> None:
+def push_msg(msg_list: list, filepath: list[str | None]) -> None:
     """
     遍历发送消息
     :param msg_list: 发送消息列表
@@ -211,7 +211,7 @@ def PushMsg(msg_list: list, filepath: list[str | None]) -> None:
             wx.SendFiles(filepath=filepath, who=l)
 
 
-def PushBreakfast() -> None:
+def push_breakfast() -> None:
     """
     推送早餐消息
     :return:
@@ -228,10 +228,10 @@ def PushBreakfast() -> None:
     ]
     # 文件列表
     filepath = [random_image_path(os.path.join(pic_files, "breakfast"))]
-    PushMsg(msg_list, filepath)
+    push_msg(msg_list, filepath)
 
 
-def PushDinner() -> None:
+def push_dinner() -> None:
     """
     推送正餐消息
     :return:
@@ -247,10 +247,10 @@ def PushDinner() -> None:
         + is_wednesday()
     ]
     filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
-    PushMsg(msg_list, filepath)
+    push_msg(msg_list, filepath)
 
 
-def PushTea() -> None:
+def push_tea() -> None:
     """
     推送下午茶消息
     :return:
@@ -265,10 +265,10 @@ def PushTea() -> None:
         + is_wednesday()
     ]
     filepath = [random_image_path(os.path.join(pic_files, "afternoontea"))]
-    PushMsg(msg_list, filepath)
+    push_msg(msg_list, filepath)
 
 
-def PushSnack() -> None:
+def push_snack() -> None:
     """
     推送宵夜消息
     :return:
@@ -284,10 +284,10 @@ def PushSnack() -> None:
         + "\n🔔宵夜订单记得要提交哦~~"
     ]
     filepath = [random_image_path(os.path.join(pic_files, "snack"))]
-    PushMsg(msg_list, filepath)
+    push_msg(msg_list, filepath)
 
 
-def PushActivity() -> None:
+def push_activity() -> None:
     """
     推送活动消息
     :return:
@@ -296,25 +296,25 @@ def PushActivity() -> None:
         # "🧧外卖通用神券红包\n美团👉s.c1ns.cn/Vx9J5\n饿了么👉s.c1ns.cn/c25G3\ntips：神券红包和霸王餐可以同时减免呦~\n\n🔗霸王餐链接：s.c1ns.cn/i14hj\n------------------\n🎉【活动挑战赛】🎁\n• 🔥迎国庆限时团长赛，7天邀新7人赢70元红包🧧\n• 🔥参与吃货挑战赛，30天累计10单赢10元红包🧧\n• 🔥点餐返会员挑战赛，30天累计10单赢30天会员💎\n\n👉活动入口：点击霸王餐链接-点击赚钱-点击活动二海报，即可参与挑战赛"
     ]
     filepath = [os.path.join(pic_files, "activity.jpg")]
-    PushMsg(msg_list, filepath)
+    push_msg(msg_list, filepath)
 
 
 if __name__ == "__main__":
 
-    # PushBreakfast()
-    # PushDinner()
-    # PushTea()
-    # PushSnack()
-    # PushActivity()
+    # push_breakfast()
+    # push_dinner()
+    # push_tea()
+    # push_snack()
+    # push_activity()
 
     # 定时执行任务
-    schedule.every().day.at("08:30:00").do(PushBreakfast)
-    # schedule.every().day.at("10:00:00").do(PushActivity)
-    schedule.every().day.at("10:30:00").do(PushDinner)
-    schedule.every().day.at("14:00:00").do(PushTea)
-    # schedule.every().day.at("16:30:00").do(PushActivity)
-    schedule.every().day.at("17:00:00").do(PushDinner)
-    schedule.every().day.at("21:00:00").do(PushSnack)
+    schedule.every().day.at("08:30:00").do(push_breakfast)
+    # schedule.every().day.at("10:00:00").do(push_activity)
+    schedule.every().day.at("10:30:00").do(push_dinner)
+    schedule.every().day.at("14:00:00").do(push_tea)
+    # schedule.every().day.at("16:30:00").do(push_activity)
+    schedule.every().day.at("17:00:00").do(push_dinner)
+    schedule.every().day.at("21:00:00").do(push_snack)
 
     while True:
         schedule.run_pending()
