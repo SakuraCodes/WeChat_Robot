@@ -314,7 +314,7 @@ if __name__ == "__main__":
     schedule.every().day.at("14:00:00").do(push_tea)
     # schedule.every().day.at("15:30:00").do(push_activity)
     schedule.every().day.at("16:45:00").do(push_dinner)
-    schedule.every().day.at("21:00:00").do(push_snack)
+    schedule.every().day.at("20:30:00").do(push_snack)
 
     while True:
         schedule.run_pending()
