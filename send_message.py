@@ -140,7 +140,8 @@ def is_wednesday() -> str:
     if datetime.datetime.today().weekday() == 2:
         act = (
             random.choice(ACTIVITY)
-            + "\n\n🌟歪麦周三狂欢！送你3天会员！输入口令“2025新年快乐”\n👉打开歪麦APP，我的-兑换专区，立即兑换！"
+            + "\n\n🌟歪麦周三狂欢！送你3天会员！输入口令“歪麦周三霸王日”\n👉打开歪麦APP，我的-兑换专区，立即兑换！"
+            # 口令:[2025新年快乐][歪麦宁波]
         )
         return act
     else:
