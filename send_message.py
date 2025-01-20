@@ -311,13 +311,13 @@ if __name__ == "__main__":
     # push_activity()
 
     # 定时执行任务
-    schedule.every().day.at("08:30:00").do(push_breakfast)
+    schedule.every().day.at("08:00:00").do(push_breakfast)
     # schedule.every().day.at("10:00:00").do(push_activity)
-    schedule.every().day.at("10:30:00").do(push_dinner)
+    schedule.every().day.at("10:15:00").do(push_dinner)
     schedule.every().day.at("14:00:00").do(push_tea)
     # schedule.every().day.at("15:30:00").do(push_activity)
-    schedule.every().day.at("16:45:00").do(push_dinner)
-    schedule.every().day.at("20:30:00").do(push_snack)
+    schedule.every().day.at("16:30:00").do(push_dinner)
+    schedule.every().day.at("20:00:00").do(push_snack)
 
     while True:
         schedule.run_pending()
