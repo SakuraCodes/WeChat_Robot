@@ -296,9 +296,14 @@ def push_activity() -> None:
     :return:
     """
     msg_list = [
-        # "🧧外卖通用神券红包\n美团👉s.c1ns.cn/Vx9J5\n饿了么👉s.c1ns.cn/c25G3\ntips：神券红包和霸王餐可以同时减免呦~\n\n🔗霸王餐链接：s.c1ns.cn/i14hj\n------------------\n🎉【活动挑战赛】🎁\n• 🔥迎国庆限时团长赛，7天邀新7人赢70元红包🧧\n• 🔥参与吃货挑战赛，30天累计10单赢10元红包🧧\n• 🔥点餐返会员挑战赛，30天累计10单赢30天会员💎\n\n👉活动入口：点击霸王餐链接-点击赚钱-点击活动二海报，即可参与挑战赛"
+        "🎉蛇年开门红，邀好友赚不停！🐍\n\n1️⃣ 邀3人首单，奖励15元！\n2️⃣ 邀7人首单，奖励40元！\n3️⃣ 邀10人首单，奖励60元！\n\n🎉蛇年狂欢，邀请越多，奖励越高，快来赚红包！🧧\n"
+        + random.choice(DELIM)
+        + "\n👉活动入口：s.mrw.so/9K4AN"
     ]
-    filepath = [os.path.join(pic_files, "activity.jpg")]
+    filepath = [
+        os.path.join(pic_files, "activity.jpg"),
+        os.path.join(pic_files, "guide.jpg"),
+    ]
     push_msg(msg_list, filepath)
 
 
@@ -308,15 +313,15 @@ if __name__ == "__main__":
     # push_dinner()
     # push_tea()
     # push_snack()
-    # push_activity()
+    push_activity()
 
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
-    # schedule.every().day.at("10:00:00").do(push_activity)
     schedule.every().day.at("10:15:00").do(push_dinner)
+    schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
-    # schedule.every().day.at("15:30:00").do(push_activity)
     schedule.every().day.at("16:30:00").do(push_dinner)
+    schedule.every().day.at("17:00:00").do(push_activity)
     schedule.every().day.at("20:00:00").do(push_snack)
 
     while True:
