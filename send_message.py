@@ -302,7 +302,7 @@ def push_activity() -> None:
     ]
     filepath = [
         os.path.join(pic_files, "activity.jpg"),
-        os.path.join(pic_files, "guide.jpg"),
+        os.path.join(pic_files, "guide.png"),
     ]
     push_msg(msg_list, filepath)
 
@@ -313,7 +313,7 @@ if __name__ == "__main__":
     # push_dinner()
     # push_tea()
     # push_snack()
-    push_activity()
+    # push_activity()
 
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
