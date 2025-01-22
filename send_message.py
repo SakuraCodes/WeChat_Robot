@@ -2,10 +2,11 @@
 import os
 import time
 import random
-import datetime
+from datetime import datetime
 
 import schedule
 from wxauto import WeChat
+from chinese_calendar import is_workday
 
 from select_category import rand_shop
 
@@ -121,15 +122,7 @@ DELIM = [
     "———❛˓◞˂̵✧———",
 ]
 
-LINK = "\n------------------\n点击链接选店啵👉s.mrw.so/9K4AN\n"
-
-ACTIVITY = [
-    "\n🔥参与吃货挑战赛，赢取10元现金🧧和30天会员！\n👉打开歪麦APP，首页-活动挑战赛，报名参与！",
-    "\n🔥挑战味蕾，赢取大奖！10元现金🧧和30天会员等你拿！\n👉打开歪麦APP，首页-活动挑战赛，报名参与！",
-    "\n🔥吃货必看！挑战成功，10元现金🧧和30天会员轻松到手！\n👉打开歪麦APP，首页-活动挑战赛，报名参与！",
-    "\n🔥敢挑战吗？10元现金🧧和30天会员就是你的啦！\n👉打开歪麦APP，首页-活动挑战赛，报名参与！",
-    "\n🔥你是真正的吃货吗？来挑战吧！10元现金🧧和30天会员等你来拿！\n👉打开歪麦APP，首页-活动挑战赛，报名参与！",
-]
+LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
 
 
 def is_wednesday() -> str:
@@ -137,15 +130,10 @@ def is_wednesday() -> str:
     判断今日为周三,则对activity重新赋值
     :return: 活动文案
     """
-    if datetime.datetime.today().weekday() == 2:
-        act = (
-            random.choice(ACTIVITY)
-            + "\n\n🌟歪麦周三狂欢！送你3天会员！输入口令“歪麦周三霸王日”\n👉打开歪麦APP，我的-兑换专区，立即兑换！"
-            # 口令:[2025新年快乐][歪麦宁波]
-        )
+    if datetime.today().weekday() == 2:
+        act = "\n------------------\n🌟歪麦周三狂欢送3天会员！\n👉打开歪麦APP，进入“我的-兑换专区”，输入口令“歪麦周三霸王日”兑换！"
+        # 口令:[2025新年快乐][歪麦宁波]
         return act
-    else:
-        return random.choice(ACTIVITY)
 
 
 # 获取pic文件夹绝对路径
@@ -219,16 +207,27 @@ def push_breakfast() -> None:
     推送早餐消息
     :return:
     """
-    category = ["⾯粉粥包"]
-    # 消息列表
-    msg_list = [
-        random.choice(BREAKFAST_TITLE)
-        + "\n"
-        + rand_shop(category)
-        + LINK
-        + random.choice(DELIM)
-        + is_wednesday()
-    ]
+    today = datetime.now()
+    if is_workday(today):
+        category = ["⾯粉粥包"]
+        # 消息列表
+        msg_list = [
+            random.choice(BREAKFAST_TITLE)
+            + "\n"
+            + rand_shop(category)
+            + "\n"
+            + random.choice(DELIM)
+            + LINK
+            + is_wednesday()
+        ]
+    else:
+        msg_list = [
+            random.choice(BREAKFAST_TITLE)
+            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + random.choice(DELIM)
+            + "\n记得及时去提交订单哦！"
+            + is_wednesday()
+        ]
     # 文件列表
     filepath = [random_image_path(os.path.join(pic_files, "breakfast"))]
     push_msg(msg_list, filepath)
@@ -239,16 +238,26 @@ def push_dinner() -> None:
     推送正餐消息
     :return:
     """
-    category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
-    msg_list = [
-        # "肯德基星期四，疯狂不止一点点！\n\n🍗 2桶20翅，疯狂美味不停歇！\n💰 61.8元，超值优惠等你来！\n🛵 配送费半价，歪麦平台让你轻松享美食！\n"
-        random.choice(DINNER_TITLE)
-        + "\n"
-        + rand_shop(category)
-        + LINK
-        + random.choice(DELIM)
-        + is_wednesday()
-    ]
+    today = datetime.now()
+    if is_workday(today):
+        category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
+        msg_list = [
+            random.choice(DINNER_TITLE)
+            + "\n"
+            + rand_shop(category)
+            + "\n"
+            + random.choice(DELIM)
+            + LINK
+            + is_wednesday()
+        ]
+    else:
+        msg_list = [
+            random.choice(DINNER_TITLE)
+            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + random.choice(DELIM)
+            + "\n记得及时去提交订单哦！"
+            + is_wednesday()
+        ]
     filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
     push_msg(msg_list, filepath)
 
@@ -258,15 +267,26 @@ def push_tea() -> None:
     推送下午茶消息
     :return:
     """
-    category = ["水果果切", "奶茶甜点", "咖啡"]
-    msg_list = [
-        random.choice(TEA_TITLE)
-        + "\n"
-        + rand_shop(category)
-        + LINK
-        + random.choice(DELIM)
-        + is_wednesday()
-    ]
+    today = datetime.now()
+    if is_workday(today):
+        category = ["水果果切", "奶茶甜点", "咖啡"]
+        msg_list = [
+            random.choice(TEA_TITLE)
+            + "\n"
+            + rand_shop(category)
+            + "\n"
+            + random.choice(DELIM)
+            + LINK
+            + is_wednesday()
+        ]
+    else:
+        msg_list = [
+            random.choice(TEA_TITLE)
+            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + random.choice(DELIM)
+            + "\n记得及时去提交订单哦！"
+            + is_wednesday()
+        ]
     filepath = [random_image_path(os.path.join(pic_files, "afternoontea"))]
     push_msg(msg_list, filepath)
 
@@ -276,16 +296,27 @@ def push_snack() -> None:
     推送宵夜消息
     :return:
     """
-    category = ["特色小吃", "其他", "烧烤夜宵", "异国料理"]
-    msg_list = [
-        random.choice(SNACK_TITLE)
-        + "\n"
-        + rand_shop(category)
-        + LINK
-        + random.choice(DELIM)
-        + is_wednesday()
-        + "\n🔔宵夜订单记得要提交哦~~"
-    ]
+    today = datetime.now()
+    if is_workday(today):
+        category = ["特色小吃", "其他", "烧烤夜宵", "异国料理"]
+        msg_list = [
+            random.choice(SNACK_TITLE)
+            + "\n"
+            + rand_shop(category)
+            + "\n"
+            + random.choice(DELIM)
+            + LINK
+            + "\n🔔宵夜订单记得要提交哦~~"
+            + is_wednesday()
+        ]
+    else:
+        msg_list = [
+            random.choice(SNACK_TITLE)
+            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + random.choice(DELIM)
+            + "\n记得及时去提交订单哦！"
+            + is_wednesday()
+        ]
     filepath = [random_image_path(os.path.join(pic_files, "snack"))]
     push_msg(msg_list, filepath)
 
