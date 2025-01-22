@@ -124,6 +124,8 @@ DELIM = [
 
 LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
 
+MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+
 
 def is_wednesday() -> str:
     """
@@ -223,7 +225,7 @@ def push_breakfast() -> None:
     else:
         msg_list = [
             random.choice(BREAKFAST_TITLE)
-            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + MSG_HOLIDAY
             + random.choice(DELIM)
             + "\n记得及时去提交订单哦！"
             + is_wednesday()
@@ -253,7 +255,7 @@ def push_dinner() -> None:
     else:
         msg_list = [
             random.choice(DINNER_TITLE)
-            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + MSG_HOLIDAY
             + random.choice(DELIM)
             + "\n记得及时去提交订单哦！"
             + is_wednesday()
@@ -282,7 +284,7 @@ def push_tea() -> None:
     else:
         msg_list = [
             random.choice(TEA_TITLE)
-            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + MSG_HOLIDAY
             + random.choice(DELIM)
             + "\n记得及时去提交订单哦！"
             + is_wednesday()
@@ -312,7 +314,7 @@ def push_snack() -> None:
     else:
         msg_list = [
             random.choice(SNACK_TITLE)
-            + "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+            + MSG_HOLIDAY
             + random.choice(DELIM)
             + "\n记得及时去提交订单哦！"
             + is_wednesday()
