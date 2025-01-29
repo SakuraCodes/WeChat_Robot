@@ -120,6 +120,7 @@ DELIM = [
     "———ʕ·͡ˑ·ཻʔ ———",
     "———🥯˶╹ꇴ╹˶🥯———",
     "———❛˓◞˂̵✧———",
+    "💮-—🏮•̀֊•́🏮—-💮",
 ]
 
 LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
@@ -127,17 +128,38 @@ LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
 MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/lZfkgmHt\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
 
 
-def is_wednesday() -> str:
+def is_within_date(start_date: str, end_date: str) -> bool:
     """
-    判断今日为周三,则对activity重新赋值
-    :return: 活动文案
+    判断当前日期是否在日期范围内
+    :param start_date: 开始日期(1.22)
+    :param end_date: 结束日期(2.5)
+    :return: 是与否
     """
+    today = datetime.today()
+    start_date = datetime.strptime(f"{today.year}.{start_date}", "%Y.%m.%d")
+    end_date = datetime.strptime(f"{today.year}.{end_date}", "%Y.%m.%d")
+
+    return start_date <= today <= end_date
+
+
+def redeem_code() -> str:
+    """
+    输出今日兑换码
+    :return: 兑换码文案
+    """
+    # 口令:[2025新年快乐][歪麦宁波][歪麦周三霸王日][2025蛇年大吉]
+    code = "\n-------兑换专区-------"
+    base_code = code  # 记录初始内容，防止无意义返回
+
+    # 判断今日是否在日期范围内
+    if is_within_date("1.22", "2.5"):
+        code += "\n🏮欢度春节赢好礼🏮\n👉新年口令：打开歪麦APP📱-我的-兑换专区输入-“2025蛇年大吉”领取14天会员\n（有效期：1.22-2.5）抓紧时间兑换哦！"
+
+    # 判断今日是否为周三 (wed)
     if datetime.today().weekday() == 2:
-        act = "\n------------------\n🌟歪麦周三狂欢送3天会员！\n👉打开歪麦APP，进入“我的-兑换专区”，输入口令“歪麦周三霸王日”兑换！"
-        # 口令:[2025新年快乐][歪麦宁波]
-        return act
-    else:
-        return ""
+        code += "\n🌟歪麦周三狂欢送3天会员🌟\n👉打开歪麦APP，进入“我的-兑换专区”，输入口令“歪麦周三霸王日”兑换！"
+
+    return code if code != base_code else ""
 
 
 # 获取pic文件夹绝对路径
@@ -222,15 +244,16 @@ def push_breakfast() -> None:
             + "\n"
             + random.choice(DELIM)
             + LINK
-            + is_wednesday()
+            + redeem_code()
         ]
     else:
         msg_list = [
             random.choice(BREAKFAST_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n记得及时去提交订单哦！"
-            + is_wednesday()
+            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            # + "\n记得及时去提交订单哦！"
+            + redeem_code()
         ]
     # 文件列表
     filepath = [random_image_path(os.path.join(pic_files, "breakfast"))]
@@ -252,15 +275,16 @@ def push_dinner() -> None:
             + "\n"
             + random.choice(DELIM)
             + LINK
-            + is_wednesday()
+            + redeem_code()
         ]
     else:
         msg_list = [
             random.choice(DINNER_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n记得及时去提交订单哦！"
-            + is_wednesday()
+            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            # + "\n记得及时去提交订单哦！"
+            + redeem_code()
         ]
     filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
     push_msg(msg_list, filepath)
@@ -281,15 +305,16 @@ def push_tea() -> None:
             + "\n"
             + random.choice(DELIM)
             + LINK
-            + is_wednesday()
+            + redeem_code()
         ]
     else:
         msg_list = [
             random.choice(TEA_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n记得及时去提交订单哦！"
-            + is_wednesday()
+            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            # + "\n记得及时去提交订单哦！"
+            + redeem_code()
         ]
     filepath = [random_image_path(os.path.join(pic_files, "afternoontea"))]
     push_msg(msg_list, filepath)
@@ -311,15 +336,16 @@ def push_snack() -> None:
             + random.choice(DELIM)
             + LINK
             + "\n🔔宵夜订单记得要提交哦~~"
-            + is_wednesday()
+            + redeem_code()
         ]
     else:
         msg_list = [
             random.choice(SNACK_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n记得及时去提交订单哦！"
-            + is_wednesday()
+            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            # + "\n记得及时去提交订单哦！"
+            + redeem_code()
         ]
     filepath = [random_image_path(os.path.join(pic_files, "snack"))]
     push_msg(msg_list, filepath)
