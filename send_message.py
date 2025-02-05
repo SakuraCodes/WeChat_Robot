@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
 import time
 import random
-from datetime import datetime
+from pathlib import Path
+from datetime import datetime, timedelta
 
 import schedule
 from wxauto import WeChat
@@ -138,6 +138,7 @@ def is_within_date(start_date: str, end_date: str) -> bool:
     today = datetime.today()
     start_date = datetime.strptime(f"{today.year}.{start_date}", "%Y.%m.%d")
     end_date = datetime.strptime(f"{today.year}.{end_date}", "%Y.%m.%d")
+    end_date += timedelta(days=1)
 
     return start_date <= today <= end_date
 
@@ -162,28 +163,39 @@ def redeem_code() -> str:
     return code if code != base_code else ""
 
 
-# 获取pic文件夹绝对路径
-current_file_dir = os.path.dirname(os.path.abspath(__file__))
-pic_files = os.path.join(current_file_dir, "pic")
-
-
 # 发送对象列表
 LISTEN_ATALL_LIST = [
     # "传输助手"
 ]
 LISTEN_LIST = [
-    # "传输助手"
-    "在宁波0-5元吃霸王餐-A3",
-    "【歪麦】宁波0-5元吃外卖-A1",
-    "【歪麦】宁波0-5元吃外卖-A2",
-    "【歪麦】宁波0-5元吃外卖-A3",
-    "【歪麦】宁波0-5元吃外卖-A4",
-    "【歪麦】宁波0-5元吃外卖-A5",
-    "【歪麦】宁波0-5元吃外卖VIP群",
-    "宁波歪麦霸王餐福利群002",
-    "宁波歪麦霸王餐福利群003",
-    "宁波歪麦霸王餐福利群004",
+    "传输助手"
+    # "在宁波0-5元吃霸王餐-A3",
+    # "【歪麦】宁波0-5元吃外卖-A1",
+    # "【歪麦】宁波0-5元吃外卖-A2",
+    # "【歪麦】宁波0-5元吃外卖-A3",
+    # "【歪麦】宁波0-5元吃外卖-A4",
+    # "【歪麦】宁波0-5元吃外卖-A5",
+    # "【歪麦】宁波0-5元吃外卖VIP群",
+    # "宁波歪麦霸王餐福利群002",
+    # "宁波歪麦霸王餐福利群003",
+    # "宁波歪麦霸王餐福利群004",
 ]
+
+# 获取pic文件夹绝对路径
+current_file_dir = Path(__file__).resolve().parent
+pic_files = current_file_dir / "pic"
+
+
+def is_file() -> bool:
+    """
+    判断result.xlsx文件是否存在
+    :return: 是与否
+    """
+    try:
+        data_files = Path(current_file_dir) / "data" / "result.xlsx"
+        return data_files.is_file()
+    except OSError:
+        return False
 
 
 def random_image_path(folder_path: str) -> str | None:
@@ -192,19 +204,20 @@ def random_image_path(folder_path: str) -> str | None:
     :param folder_path: 指定文件夹路径
     :return: 指定文件夹路径中的图片路径
     """
-    # 获取文件夹中的所有文件
-    all_files = os.listdir(folder_path)
-    # 筛选出图片文件(根据需要调整图片格式)
+    # 获取文件夹路径对象
+    folder = Path(folder_path)
+
+    # 获取文件夹中的所有图片文件(指定格式)
     image_files = [
-        f for f in all_files if f.endswith((".jpg", ".jpeg", ".png", ".bmp"))
+        f for f in folder.glob("*") if f.suffix in {".jpg", ".jpeg", ".png", ".bmp"}
     ]
+
     # 如果没有找到图片文件,返回None
     if not image_files:
         return None
-    # 随机选择一张图片
-    random_image = random.choice(image_files)
-    # 拼接完整路径
-    return os.path.join(folder_path, random_image)
+
+    # 随机选择一张图片并返回绝对路径
+    return str(random.choice(image_files))
 
 
 def push_msg(msg_list: list, filepath: list[str | None]) -> None:
@@ -234,7 +247,7 @@ def push_breakfast() -> None:
     :return:
     """
     today = datetime.now()
-    if is_workday(today):
+    if is_workday(today) & is_file():
         category = ["⾯粉粥包"]
         # 消息列表
         msg_list = [
@@ -251,12 +264,12 @@ def push_breakfast() -> None:
             random.choice(BREAKFAST_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
-            # + "\n记得及时去提交订单哦！"
+            # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            + "\n记得及时去提交订单哦！"
             + redeem_code()
         ]
     # 文件列表
-    filepath = [random_image_path(os.path.join(pic_files, "breakfast"))]
+    filepath = [random_image_path(pic_files / "breakfast")]
     push_msg(msg_list, filepath)
 
 
@@ -266,7 +279,7 @@ def push_dinner() -> None:
     :return:
     """
     today = datetime.now()
-    if is_workday(today):
+    if is_workday(today) & is_file():
         category = ["特色小吃", "中餐便餐", "⽕锅冒菜", "异国料理"]
         msg_list = [
             random.choice(DINNER_TITLE)
@@ -282,11 +295,11 @@ def push_dinner() -> None:
             random.choice(DINNER_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
-            # + "\n记得及时去提交订单哦！"
+            # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            + "\n记得及时去提交订单哦！"
             + redeem_code()
         ]
-    filepath = [random_image_path(os.path.join(pic_files, "dinner"))]
+    filepath = [random_image_path(pic_files / "dinner")]
     push_msg(msg_list, filepath)
 
 
@@ -296,7 +309,7 @@ def push_tea() -> None:
     :return:
     """
     today = datetime.now()
-    if is_workday(today):
+    if is_workday(today) & is_file():
         category = ["水果果切", "奶茶甜点", "咖啡"]
         msg_list = [
             random.choice(TEA_TITLE)
@@ -312,11 +325,11 @@ def push_tea() -> None:
             random.choice(TEA_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
-            # + "\n记得及时去提交订单哦！"
+            # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            + "\n记得及时去提交订单哦！"
             + redeem_code()
         ]
-    filepath = [random_image_path(os.path.join(pic_files, "afternoontea"))]
+    filepath = [random_image_path(pic_files / "afternoontea")]
     push_msg(msg_list, filepath)
 
 
@@ -326,7 +339,7 @@ def push_snack() -> None:
     :return:
     """
     today = datetime.now()
-    if is_workday(today):
+    if is_workday(today) & is_file():
         category = ["特色小吃", "其他", "烧烤夜宵", "异国料理"]
         msg_list = [
             random.choice(SNACK_TITLE)
@@ -343,11 +356,11 @@ def push_snack() -> None:
             random.choice(SNACK_TITLE)
             + MSG_HOLIDAY
             + random.choice(DELIM)
-            + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
-            # + "\n记得及时去提交订单哦！"
+            # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+            + "\n记得及时去提交订单哦！"
             + redeem_code()
         ]
-    filepath = [random_image_path(os.path.join(pic_files, "snack"))]
+    filepath = [random_image_path(pic_files / "snack")]
     push_msg(msg_list, filepath)
 
 
@@ -362,8 +375,8 @@ def push_activity() -> None:
         + "\n👉活动入口：s.mrw.so/9K4AN"
     ]
     filepath = [
-        os.path.join(pic_files, "activity.jpg"),
-        os.path.join(pic_files, "guide.png"),
+        pic_files / "activity.jpg",
+        pic_files / "guide.png",
     ]
     push_msg(msg_list, filepath)
 
@@ -371,7 +384,7 @@ def push_activity() -> None:
 if __name__ == "__main__":
 
     # push_breakfast()
-    # push_dinner()
+    push_dinner()
     # push_tea()
     # push_snack()
     # push_activity()
@@ -379,10 +392,10 @@ if __name__ == "__main__":
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
     schedule.every().day.at("10:15:00").do(push_dinner)
-    schedule.every().day.at("10:30:00").do(push_activity)
+    # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
     schedule.every().day.at("16:30:00").do(push_dinner)
-    schedule.every().day.at("17:00:00").do(push_activity)
+    # schedule.every().day.at("17:00:00").do(push_activity)
     schedule.every().day.at("20:00:00").do(push_snack)
 
     while True:

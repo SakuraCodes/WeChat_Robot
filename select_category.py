@@ -3,9 +3,6 @@ import random
 
 import pandas as pd
 
-# 读取Excel文件
-df = pd.read_excel("./data/result.xlsx")
-
 
 def rand_shop(categories: list) -> str:
     """
@@ -13,6 +10,8 @@ def rand_shop(categories: list) -> str:
     :param categories: 品类列表
     :return: 推荐店铺信息
     """
+    # 读取Excel文件
+    df = pd.read_excel("./data/result.xlsx")
     # 确保categories是列表类型，以便可以处理单个或多个品类的情况
     if not isinstance(categories, list):
         categories = [categories]
