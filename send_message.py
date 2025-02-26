@@ -166,6 +166,16 @@ def redeem_code() -> str:
 # 发送对象列表
 LISTEN_ATALL_LIST = [
     # "传输助手"
+    "【歪麦】在宁波0-5元吃霸王餐-A3",
+    "【歪麦】宁波0-5元吃外卖-A1",
+    "【歪麦】宁波0-5元吃外卖-A2",
+    "【歪麦】宁波0-5元吃外卖-A3",
+    "【歪麦】宁波0-5元吃外卖-A4",
+    "【歪麦】宁波0-5元吃外卖-A5",
+    "【歪麦】宁波0-5元吃外卖VIP群",
+    "【歪麦】宁波霸王餐福利群002",
+    "【歪麦】宁波霸王餐福利群003",
+    "【歪麦】宁波霸王餐福利群004",
 ]
 LISTEN_LIST = [
     # "传输助手"
@@ -231,14 +241,27 @@ def push_msg(msg_list: list, filepath: list[str | None]) -> None:
     wx = WeChat()
     # 切换到聊天页面
     wx.SwitchToChat()
-    for la in LISTEN_ATALL_LIST:
-        for m in msg_list:
-            wx.AtAll(msg=m, who=la)
-            wx.SendFiles(filepath=filepath, who=la)
     for l in LISTEN_LIST:
         for m in msg_list:
             wx.SendMsg(msg=m, who=l)
             wx.SendFiles(filepath=filepath, who=l)
+
+
+def push_msg_at(msg_list: list, filepath: list[str | None]) -> None:
+    """
+    遍历发送消息
+    :param msg_list: 发送消息列表
+    :param filepath: 发送文件路径列表
+    :return:
+    """
+    # 获取微信窗口对象
+    wx = WeChat()
+    # 切换到聊天页面
+    wx.SwitchToChat()
+    for la in LISTEN_ATALL_LIST:
+        for m in msg_list:
+            wx.AtAll(msg=m, who=la)
+            wx.SendFiles(filepath=filepath, who=la)
 
 
 def push_breakfast() -> None:
@@ -381,6 +404,20 @@ def push_activity() -> None:
     push_msg(msg_list, filepath)
 
 
+def push_activity_1() -> None:
+    """
+    推送活动消息
+    :return:
+    """
+    msg_list = [
+        "「重磅回归」商家联盟全面升级，限时福利即刻开抢！\n\n🚀 新人&老用户双重礼遇\n  即日起添加官方客服微信【MMYK-WXM】，发送注册手机号，立领30天VIP会员（原价19.9元/月），享每单补贴3元、预定免费、返利加速等权益\n\n⏰ 活动时间：2025年2月26日16:00 - 3月5日16:00\n\n👉 添加客服领会员：扫码下方二维码 → 发送“会员+注册手机号” → 自动激活权益"
+    ]
+    filepath = [
+        pic_files / "企微二维码 (麦麦).jpg",
+    ]
+    push_msg(msg_list, filepath)
+
+
 if __name__ == "__main__":
 
     # push_breakfast()
@@ -394,6 +431,7 @@ if __name__ == "__main__":
     schedule.every().day.at("10:15:00").do(push_dinner)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
+    schedule.every().day.at("15:55:00").do(push_activity_1)
     schedule.every().day.at("16:30:00").do(push_dinner)
     # schedule.every().day.at("17:00:00").do(push_activity)
     schedule.every().day.at("20:00:00").do(push_snack)
