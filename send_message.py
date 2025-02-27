@@ -178,17 +178,17 @@ LISTEN_ATALL_LIST = [
     "【歪麦】宁波霸王餐福利群004",
 ]
 LISTEN_LIST = [
-    # "传输助手"
-    "【歪麦】在宁波0-5元吃霸王餐-A3",
-    "【歪麦】宁波0-5元吃外卖-A1",
-    "【歪麦】宁波0-5元吃外卖-A2",
-    "【歪麦】宁波0-5元吃外卖-A3",
-    "【歪麦】宁波0-5元吃外卖-A4",
-    "【歪麦】宁波0-5元吃外卖-A5",
-    "【歪麦】宁波0-5元吃外卖VIP群",
-    "【歪麦】宁波霸王餐福利群002",
-    "【歪麦】宁波霸王餐福利群003",
-    "【歪麦】宁波霸王餐福利群004",
+    "传输助手"
+    # "【歪麦】在宁波0-5元吃霸王餐-A3",
+    # "【歪麦】宁波0-5元吃外卖-A1",
+    # "【歪麦】宁波0-5元吃外卖-A2",
+    # "【歪麦】宁波0-5元吃外卖-A3",
+    # "【歪麦】宁波0-5元吃外卖-A4",
+    # "【歪麦】宁波0-5元吃外卖-A5",
+    # "【歪麦】宁波0-5元吃外卖VIP群",
+    # "【歪麦】宁波霸王餐福利群002",
+    # "【歪麦】宁波霸王餐福利群003",
+    # "【歪麦】宁波霸王餐福利群004",
 ]
 
 # 获取pic文件夹绝对路径
@@ -244,12 +244,14 @@ def push_msg(msg_list: list, filepath: list[str | None]) -> None:
     for l in LISTEN_LIST:
         for m in msg_list:
             wx.SendMsg(msg=m, who=l)
+            # 将文件路径转换为字符串
+            filepath = [str(path) if path else None for path in filepath]
             wx.SendFiles(filepath=filepath, who=l)
 
 
-def push_msg_at(msg_list: list, filepath: list[str | None]) -> None:
+def push_atall_msg(msg_list: list, filepath: list[str | None]) -> None:
     """
-    遍历发送消息
+    遍历发送at全部人的消息
     :param msg_list: 发送消息列表
     :param filepath: 发送文件路径列表
     :return:
@@ -261,6 +263,8 @@ def push_msg_at(msg_list: list, filepath: list[str | None]) -> None:
     for la in LISTEN_ATALL_LIST:
         for m in msg_list:
             wx.AtAll(msg=m, who=la)
+            # 将文件路径转换为字符串
+            filepath = [str(path) if path else None for path in filepath]
             wx.SendFiles(filepath=filepath, who=la)
 
 
@@ -412,9 +416,7 @@ def push_activity_1() -> None:
     msg_list = [
         "「重磅回归」商家联盟全面升级，限时福利即刻开抢！\n\n🚀 新人&老用户双重礼遇\n  即日起添加【歪麦福利官-麦麦】，发送注册手机号，立领3️⃣0️⃣天VIP会员（原价19.9元/月），享每单补贴3元、预定免费、返利加速等权益\n\n⏰ 活动时间：2025年2月27日9:30 - 3月6日16:00\n\n👉 添加客服领会员：扫码下方二维码 → 发送“会员+注册手机号” → 自动激活权益"
     ]
-    filepath = [
-        pic_files / "code.jpg",
-    ]
+    filepath = [pic_files / "code.jpg"]
     push_msg(msg_list, filepath)
 
 
@@ -425,6 +427,7 @@ if __name__ == "__main__":
     # push_tea()
     # push_snack()
     # push_activity()
+    # push_activity_1()
 
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
