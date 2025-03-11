@@ -431,7 +431,7 @@ if __name__ == "__main__":
 
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
-    schedule.every().day.at("09:25:00").do(push_activity_1)
+    # schedule.every().day.at("09:25:00").do(push_activity_1)
     schedule.every().day.at("10:15:00").do(push_dinner)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
