@@ -27,6 +27,8 @@ def rand_shop(categories: list) -> str:
         selected_df = filtered_df
     # 替换“满返”列中所有“满”字为“🈵”
     selected_df["返利信息"] = selected_df["返利信息"].str.replace("满", "🈵")
+    # 替换“满返”列中所有“返”字为“🉐”
+    selected_df["返利信息"] = selected_df["返利信息"].str.replace("返", "🉐")
     # 遍历选择的商家，并将商家名称和满返信息拼接到输出字符串中
     shop_info = ""
     for index, row in selected_df.iterrows():
