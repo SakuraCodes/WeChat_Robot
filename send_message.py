@@ -125,7 +125,7 @@ DELIM = [
 
 LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
 
-MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/AvSbR2Fz\n『饿了么🧧』链接\n👉u.ele.me/6ZQrIQ37\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
+MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/5nttW4vz\n『饿了么🧧』链接\n👉u.ele.me/t4bGhihl\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
 
 CUSTOM_MSG = "\n\n🐔紫燕百味鸡（卤味·套餐饭·吾悦广场店）\n✨会员🈵20🉐10\n\n🥞熊子文烙饼卷肉（宁大步行街店）\n✨会员🈵20🉐13\n\n🐤鸡柳大人（鸡柳·年糕·薯条·云创店）\n✨会员🈵20🉐13\n\n🍱阿四饭店\n✨会员🈵20🉐13\n\n湖南侗家泡菜·凉菜卤菜（甬港北路店）\n✨会员🈵20🉐12\n\n喜仕屋牛井咖喱（宁工商业街店）\n✨会员🈵20🉐12\n"
 
