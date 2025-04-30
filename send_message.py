@@ -154,7 +154,7 @@ def redeem_code() -> str:
     code = "\n-------兑换专区-------"
     base_code = code  # 记录初始内容，防止无意义返回
 
-    # 判断今日是否在日期范围内
+    # 判断今日是否在日期范围内 (新年)
     if is_within_date("1.22", "2.5"):
         code += "\n🏮欢度春节赢好礼🏮\n👉新年口令：打开歪麦APP📱-我的-兑换专区输入-“2025蛇年大吉”领取14天会员\n（有效期：1.22-2.5）抓紧时间兑换哦！"
 
@@ -445,11 +445,13 @@ def push_activity_51() -> None:
     推送活动消息
     :return:
     """
-    msg_list = [
-        "「歪麦5.1出游季」五一出游季 玩转黄金周！🚀\n\n领取5️⃣天会员👉歪麦霸王餐APP-我的-兑换专区\n\n🎫兑换口令: 五一美食特惠\n\n⏰ 活动时间：2025年5月1日 - 5月5日"
-    ]
-    filepath = [pic_files / "51.jpg"]
-    push_msg(msg_list, filepath)
+    # 判断今日是否在日期范围内 (劳动节)
+    if is_within_date("5.1", "5.5"):
+        msg_list = [
+            "「歪麦5.1出游季」五一出游季 玩转黄金周！🚀\n\n领取5️⃣天会员👉歪麦霸王餐APP-我的-兑换专区\n\n🎫兑换口令: 五一美食特惠\n\n⏰ 活动时间：2025年5月1日 - 5月5日"
+        ]
+        filepath = [pic_files / "51.jpg"]
+        push_msg(msg_list, filepath)
 
 
 if __name__ == "__main__":
