@@ -428,7 +428,7 @@ def push_activity() -> None:
     push_msg(msg_list, filepath)
 
 
-def push_activity_1() -> None:
+def push_activity_newyear() -> None:
     """
     推送活动消息
     :return:
@@ -440,6 +440,18 @@ def push_activity_1() -> None:
     push_msg(msg_list, filepath)
 
 
+def push_activity_51() -> None:
+    """
+    推送活动消息
+    :return:
+    """
+    msg_list = [
+        "「歪麦5.1出游季」五一出游季 玩转黄金周！🚀\n\n领取5️⃣天会员👉歪麦霸王餐APP-我的-兑换专区\n\n🎫兑换口令: 五一美食特惠\n\n⏰ 活动时间：2025年5月1日 - 5月5日"
+    ]
+    filepath = [pic_files / "51.jpg"]
+    push_msg(msg_list, filepath)
+
+
 if __name__ == "__main__":
 
     # push_breakfast()
@@ -448,16 +460,19 @@ if __name__ == "__main__":
     # push_tea()
     # push_snack()
     # push_activity()
-    # push_activity_1()
+    # push_activity_newyear()
+    # push_activity_51()
 
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
-    # schedule.every().day.at("09:25:00").do(push_activity_1)
+    # schedule.every().day.at("09:25:00").do(push_activity_newyear)
+    schedule.every().day.at("09:25:00").do(push_activity_51)
     # schedule.every().day.at("10:15:00").do(push_dinner)
     schedule.every().day.at("10:15:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
     # schedule.every().day.at("16:30:00").do(push_dinner)
+    schedule.every().day.at("16:00:00").do(push_activity_51)
     schedule.every().day.at("16:30:00").do(push_dinner_1)
     # schedule.every().day.at("17:00:00").do(push_activity)
     schedule.every().day.at("20:00:00").do(push_snack)
