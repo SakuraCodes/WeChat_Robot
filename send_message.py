@@ -127,7 +127,7 @@ LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
 
 MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/5nttW4vz\n『饿了么🧧』链接\n👉u.ele.me/t4bGhihl\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
 
-CUSTOM_MSG = "\n\n🐔紫燕百味鸡（卤味·套餐饭·吾悦广场店）\n✨会员🈵20🉐10\n\n🥞熊子文烙饼卷肉（宁大步行街店）\n✨会员🈵20🉐13\n\n🐤鸡柳大人（鸡柳·年糕·薯条·云创店）\n✨会员🈵20🉐13\n\n🍱阿四饭店\n✨会员🈵20🉐13\n\n湖南侗家泡菜·凉菜卤菜（甬港北路店）\n✨会员🈵20🉐12\n\n喜仕屋牛井咖喱（宁工商业街店）\n✨会员🈵20🉐12\n"
+CUSTOM_MSG = "\n\n🍘麦赛疆·馕饼烤包子·羊肉串(向阳苑店）\n✨会员🈵20🉐13\n\n🥗港岛记·茶餐厅（宁波世纪大道店）\n✨会员🈵23🉐15\n\n🍲德湘厨·绝无预制菜（东部新城店）\n✨会员🈵30🉐17\n\n🍸LINLEE·林里手打柠檬茶（海曙天一广场店）\n✨会员🈵18🉐13\n\n🐔正新鸡排（旗舰店）\n✨会员🈵20🉐10\n"
 
 
 def is_within_date(start_date: str, end_date: str) -> bool:
@@ -468,14 +468,14 @@ if __name__ == "__main__":
     # 定时执行任务
     schedule.every().day.at("08:00:00").do(push_breakfast)
     # schedule.every().day.at("09:25:00").do(push_activity_newyear)
-    schedule.every().day.at("09:25:00").do(push_activity_51)
+    # schedule.every().day.at("09:25:00").do(push_activity_51)
     # schedule.every().day.at("10:15:00").do(push_dinner)
     schedule.every().day.at("10:15:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
     # schedule.every().day.at("16:30:00").do(push_dinner)
-    schedule.every().day.at("16:00:00").do(push_activity_51)
     schedule.every().day.at("16:30:00").do(push_dinner_1)
+    # schedule.every().day.at("16:00:00").do(push_activity_51)
     # schedule.every().day.at("17:00:00").do(push_activity)
     schedule.every().day.at("20:00:00").do(push_snack)
 

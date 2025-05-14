@@ -6,8 +6,12 @@ import pandas as pd
 # 读取Excel文件
 df = pd.read_excel("./data/门店发布统计.xlsx")
 
+# 筛选宁波市的店铺
+df = df[df["市"] == "宁波市"]
 # 提取需要的列
-selected_df = df.loc[:, ["店铺名称", "经营品类", "返利信息", "满返差额"]]
+selected_df = df.loc[:, ["店铺名称", "经营品类", "返利信息", "满返差额", "创建时间"]]
+# 确保"创建时间"列是日期格式
+selected_df["创建时间"] = pd.to_datetime(selected_df["创建时间"])
 
 
 def cleaned_shopname(value: str) -> str:
@@ -58,9 +62,8 @@ selected_df["返利信息"] = selected_df["返利信息"].apply(remove_dot_zero)
 selected_df["返利信息"] = selected_df["返利信息"].apply(rebateinfo_first_match)
 
 
-# 将"满返差额"列根据";"拆分成列表并取第一个元素
-selected_df["满返差额"] = selected_df["满返差额"].str.split(";").str[0]
-# 转换"满返差额"列为数值类型(默认float类型)
+# 处理"满返差额"列：先转换为字符串，再分割并取第一个元素，最后转换为数值
+selected_df["满返差额"] = selected_df["满返差额"].astype(str).str.split(";").str[0]
 selected_df["满返差额"] = pd.to_numeric(
     selected_df["满返差额"], errors="coerce"
 )  # errors="coerce" 会将无法转换的值设置为NaN
