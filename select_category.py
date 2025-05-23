@@ -19,13 +19,16 @@ def rand_shop(categories: list) -> str:
         categories = [categories]
     # 筛选“经营品类”，使用isin函数筛选经营品类
     filtered_df = df[df["经营品类"].isin(categories)]
-    # 按创建时间(降序)和满返差额(升序)排序后取前10行
-    filtered_df = filtered_df.sort_values(
-        by=["创建时间", "满返差额"], ascending=[False, True]
-    )[:10]
+    # # 按创建时间(降序)和满返差额(升序)排序后取前10行
+    # filtered_df = filtered_df.sort_values(
+    #     by=["创建时间", "满返差额"], ascending=[False, True]
+    # )[:10]
+    # 按满返差额(升序)排序后取前10行
+    filtered_df = filtered_df.sort_values(by="满返差额", ascending=True)[:10]
+    print(filtered_df)
     # 随机选择5个商家(如果行数不足则返回原值)
-    # num_selected = random.randint(3, 5)
     num_selected = 5
+    # num_selected = random.randint(3, 5)
     if num_selected <= len(filtered_df):
         selected_df = filtered_df.sample(n=num_selected)
     else:
@@ -43,4 +46,4 @@ def rand_shop(categories: list) -> str:
     return shop_info
 
 
-# print(rand_shop(["中餐便餐"]))
+print(rand_shop(["中餐便餐"]))
