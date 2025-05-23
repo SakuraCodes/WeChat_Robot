@@ -466,18 +466,18 @@ if __name__ == "__main__":
     # push_activity_51()
 
     # 定时执行任务
-    schedule.every().day.at("08:00:00").do(push_breakfast)
+    # schedule.every().day.at("08:00:00").do(push_breakfast)
     # schedule.every().day.at("09:25:00").do(push_activity_newyear)
     # schedule.every().day.at("09:25:00").do(push_activity_51)
-    # schedule.every().day.at("10:15:00").do(push_dinner)
-    schedule.every().day.at("10:15:00").do(push_dinner_1)
+    schedule.every().day.at("10:15:00").do(push_dinner)
+    # schedule.every().day.at("10:15:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_tea)
-    # schedule.every().day.at("16:30:00").do(push_dinner)
-    schedule.every().day.at("16:30:00").do(push_dinner_1)
+    schedule.every().day.at("16:30:00").do(push_dinner)
+    # schedule.every().day.at("16:30:00").do(push_dinner_1)
     # schedule.every().day.at("16:00:00").do(push_activity_51)
     # schedule.every().day.at("17:00:00").do(push_activity)
-    schedule.every().day.at("20:00:00").do(push_snack)
+    # schedule.every().day.at("20:00:00").do(push_snack)
 
     while True:
         schedule.run_pending()
