@@ -457,7 +457,7 @@ def push_activity_51() -> None:
 if __name__ == "__main__":
 
     # push_breakfast()
-    push_dinner()
+    # push_dinner()
     # push_dinner_1()
     # push_tea()
     # push_snack()
