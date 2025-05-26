@@ -24,8 +24,8 @@ def rand_shop(categories: list) -> str:
     #     by=["创建时间", "满返差额"], ascending=[False, True]
     # )[:10]
     # 按满返差额(升序)排序后取前10行
-    filtered_df = filtered_df.sort_values(by="满返差额", ascending=True)[:10]
-    print(filtered_df)
+    # filtered_df = filtered_df.sort_values(by="满返差额", ascending=True)[:10]
+    # print(filtered_df)
     # 随机选择5个商家(如果行数不足则返回原值)
     num_selected = 5
     # num_selected = random.randint(3, 5)
@@ -46,4 +46,4 @@ def rand_shop(categories: list) -> str:
     return shop_info
 
 
-print(rand_shop(["中餐便餐"]))
+# print(rand_shop(["中餐便餐"]))
