@@ -221,7 +221,10 @@ def random_image_path(folder_path: str) -> str | None:
 
     # 获取文件夹中的所有图片文件(指定格式)
     image_files = [
-        f for f in folder.glob("*") if f.suffix in {".jpg", ".jpeg", ".png", ".bmp"}
+        f
+        for f in folder.glob("*")
+        if f.suffix
+        in {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp", ".bmp", ".heic", ".heif"}
     ]
 
     # 如果没有找到图片文件,返回None
@@ -350,7 +353,7 @@ def push_dinner_1() -> None:
     push_msg(msg_list, filepath)
 
 
-def push_tea() -> None:
+def push_afternoon() -> None:
     """
     推送下午茶消息
     :return:
@@ -376,7 +379,7 @@ def push_tea() -> None:
             + "\n记得及时去提交订单哦！"
             + redeem_code()
         ]
-    filepath = [random_image_path(pic_files / "afternoontea")]
+    filepath = [random_image_path(pic_files / "afternoon")]
     push_msg(msg_list, filepath)
 
 
@@ -459,7 +462,7 @@ if __name__ == "__main__":
     # push_breakfast()
     # push_dinner()
     # push_dinner_1()
-    # push_tea()
+    # push_afternoon()
     # push_snack()
     # push_activity()
     # push_activity_newyear()
@@ -472,7 +475,7 @@ if __name__ == "__main__":
     # schedule.every().day.at("10:15:00").do(push_dinner)
     schedule.every().day.at("10:15:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
-    schedule.every().day.at("14:00:00").do(push_tea)
+    schedule.every().day.at("14:00:00").do(push_afternoon)
     # schedule.every().day.at("16:30:00").do(push_dinner)
     schedule.every().day.at("16:30:00").do(push_dinner_1)
     # schedule.every().day.at("16:00:00").do(push_activity_51)
