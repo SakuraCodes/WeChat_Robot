@@ -42,7 +42,7 @@ def rand_shop(categories: list) -> str:
     for index, row in selected_df.iterrows():
         name = row["店铺名称"].strip()
         cashback = row["返利信息"]
-        shop_info += f"\n{name}\n✨会员{cashback}"
+        shop_info += f"\n{name}\n✨会员{cashback}\n"
     return shop_info
 
 

@@ -123,11 +123,13 @@ DELIM = [
     "💮-—🏮•̀֊•́🏮—-💮",
 ]
 
-LINK = "\n  点击链接选店啵\n👉s.mrw.so/9K4AN"
+LINK = "\n点击链接选店啵\n👉b.u6v.cn/6xeWIC\n"
+
+ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信客服免费领取30天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
 
 MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/5nttW4vz\n『饿了么🧧』链接\n👉u.ele.me/t4bGhihl\n『歪麦』店铺入口\n👉s.mrw.so/9K4AN\n"
 
-CUSTOM_MSG = "\n\n☕zZcoffee(咖啡·可颂·三明治)\n✨会员🈵25🉐15\n\n🥗港岛记·茶餐厅（宁波世纪大道店）\n✨会员🈵20🉐15\n\n🍲大熊炸鸡（城隍庙步行街店）\n✨会员🈵20🉐12\n\n🍸LINLEE·林里手打柠檬茶\n✨会员🈵18🉐13\n\n🐔正新鸡排\n✨会员🈵20🉐10\n"
+CUSTOM_MSG = "\n\n🍲回家地道湖南菜（宁波店）\n✨会员🈵20🉐15\n\n🦆栖头鸭·鸭脖卤味（宁波鼓楼店）\n✨会员🈵20🉐15\n\n🍗大熊炸鸡（城隍庙步行街店）\n✨会员🈵15🉐12\n\n🍸LINLEE·林里手打柠檬茶\n✨会员🈵15🉐13\n\n🐔正新鸡排\n✨会员🈵20🉐10\n"
 
 
 def is_within_date(start_date: str, end_date: str) -> bool:
@@ -180,17 +182,17 @@ LISTEN_ATALL_LIST = [
     "【歪麦】宁波霸王餐福利群004",
 ]
 LISTEN_LIST = [
-    # "推送测试"
-    "【歪麦】在宁波0-5元吃霸王餐-A3",
-    "【歪麦】宁波0-5元吃外卖-A1",
-    "【歪麦】宁波0-5元吃外卖-A2",
-    "【歪麦】宁波0-5元吃外卖-A3",
-    "【歪麦】宁波0-5元吃外卖-A4",
-    "【歪麦】宁波0-5元吃外卖-A5",
-    "【歪麦】云创0-5元吃外卖VIP群",
-    "【歪麦】宁波霸王餐福利群002",
-    "【歪麦】宁波霸王餐福利群003",
-    "【歪麦】宁波霸王餐福利群004",
+    "推送测试"
+    # "【歪麦】在宁波0-5元吃霸王餐-A3",
+    # "【歪麦】宁波0-5元吃外卖-A1",
+    # "【歪麦】宁波0-5元吃外卖-A2",
+    # "【歪麦】宁波0-5元吃外卖-A3",
+    # "【歪麦】宁波0-5元吃外卖-A4",
+    # "【歪麦】宁波0-5元吃外卖-A5",
+    # "【歪麦】云创0-5元吃外卖VIP群",
+    # "【歪麦】宁波霸王餐福利群002",
+    # "【歪麦】宁波霸王餐福利群003",
+    # "【歪麦】宁波霸王餐福利群004",
 ]
 
 # 获取pic文件夹绝对路径
@@ -286,9 +288,10 @@ def push_breakfast() -> None:
             random.choice(BREAKFAST_TITLE)
             + "\n"
             + rand_shop(category)
-            + "\n"
-            + random.choice(DELIM)
+            # + "\n"
+            # + random.choice(DELIM)
             + LINK
+            + ACTIVITY
             + redeem_code()
         ]
     else:
@@ -317,9 +320,10 @@ def push_dinner() -> None:
             random.choice(DINNER_TITLE)
             + "\n"
             + rand_shop(category)
-            + "\n"
-            + random.choice(DELIM)
+            # + "\n"
+            # + random.choice(DELIM)
             + LINK
+            + ACTIVITY
             + redeem_code()
         ]
     else:
@@ -343,11 +347,13 @@ def push_dinner_1() -> None:
     msg_list = [
         random.choice(DINNER_TITLE)
         + CUSTOM_MSG
-        + random.choice(DELIM)
+        # + random.choice(DELIM)
         # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
-        + "\n记得及时去提交订单哦！"
+        # + "\n记得及时去提交订单哦！"
+        + LINK
+        + ACTIVITY
         + redeem_code()
-        + "\n\n更多优惠戳↓\n㊙新用户私信客服免费领取30天会员"
+        # + "\n\n更多优惠戳↓\n㊙新用户私信客服免费领取30天会员"
     ]
     filepath = [random_image_path(pic_files / "dinner")]
     push_msg(msg_list, filepath)
@@ -365,9 +371,10 @@ def push_afternoon() -> None:
             random.choice(TEA_TITLE)
             + "\n"
             + rand_shop(category)
-            + "\n"
-            + random.choice(DELIM)
+            # + "\n"
+            # + random.choice(DELIM)
             + LINK
+            + ACTIVITY
             + redeem_code()
         ]
     else:
@@ -395,10 +402,11 @@ def push_snack() -> None:
             random.choice(SNACK_TITLE)
             + "\n"
             + rand_shop(category)
-            + "\n"
-            + random.choice(DELIM)
+            # + "\n"
+            # + random.choice(DELIM)
             + LINK
-            + "\n🔔宵夜订单记得要提交哦~~"
+            + ACTIVITY
+            # + "\n🔔宵夜订单记得要提交哦~~"
             + redeem_code()
         ]
     else:
@@ -473,11 +481,11 @@ if __name__ == "__main__":
     # schedule.every().day.at("09:25:00").do(push_activity_newyear)
     # schedule.every().day.at("09:25:00").do(push_activity_51)
     # schedule.every().day.at("10:15:00").do(push_dinner)
-    schedule.every().day.at("10:15:00").do(push_dinner_1)
+    schedule.every().day.at("10:30:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
     schedule.every().day.at("14:00:00").do(push_afternoon)
     # schedule.every().day.at("16:30:00").do(push_dinner)
-    schedule.every().day.at("16:30:00").do(push_dinner_1)
+    schedule.every().day.at("17:00:00").do(push_dinner_1)
     # schedule.every().day.at("16:00:00").do(push_activity_51)
     # schedule.every().day.at("17:00:00").do(push_activity)
     # schedule.every().day.at("20:00:00").do(push_snack)
