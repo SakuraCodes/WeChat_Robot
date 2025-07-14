@@ -1,10 +1,36 @@
 # -*- coding: utf-8 -*-
 import re
+import os
+from datetime import datetime
 
 import pandas as pd
 
-# 读取Excel文件
-df = pd.read_excel("./data/门店发布统计.xlsx")
+# 设置Excel文件保存路径
+save_path = "./data"
+
+# 初始化值(最新Excel文件的修改日期和文件名)
+latest_date = None
+latest_filepath = None
+
+# 遍历文件路径中的文件名包含"门店发布统计"的Excel文件
+for filename in os.listdir(save_path):
+    if "门店发布统计" in filename and filename.endswith(".xlsx"):
+        # 获取相对文件路径
+        filepath = os.path.join(save_path, filename)
+        # 获取文件修改日期
+        date = datetime.fromtimestamp(os.path.getmtime(filepath)).date()
+        if latest_date is None or date > latest_date:
+            latest_date = date
+            latest_filepath = filepath
+
+# 读取最新日期的Excel文件
+if latest_filepath:
+    df = pd.read_excel(latest_filepath)
+else:
+    print("未找到包含'门店发布统计'的Excel文件")
+
+# # 读取Excel文件
+# df = pd.read_excel("./data/门店发布统计.xlsx")
 
 # 筛选宁波市的店铺
 df = df[df["市"] == "宁波市"]
