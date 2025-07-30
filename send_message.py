@@ -125,7 +125,7 @@ DELIM = [
 
 LINK = "\n点击链接选店啵\n👉b.u6v.cn/6xeWIC\n"
 
-ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信 麦麦 免费领取30天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
+ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信 麦麦 免费领取7️⃣天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
 
 MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/N4IxkGyz\n『饿了么🧧』链接\n👉u.ele.me/CIdAfDY8\n『歪麦』店铺入口\n👉b.u6v.cn/6xeWIC\n"
 
