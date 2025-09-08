@@ -123,11 +123,11 @@ DELIM = [
     "💮-—🏮•̀֊•́🏮—-💮",
 ]
 
-LINK = "\n点击链接选店啵\n👉b.u6v.cn/6xeWIC\n"
+LINK = "\n点击链接选店啵\n👉suo.im/cZi4k\n"
 
 ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信 麦麦 免费领取7️⃣天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
 
-MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/N4IxkGyz\n『饿了么🧧』链接\n👉u.ele.me/CIdAfDY8\n『歪麦』店铺入口\n👉b.u6v.cn/6xeWIC\n"
+MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/N4IxkGyz\n『饿了么🧧』链接\n👉u.ele.me/CIdAfDY8\n『歪麦』店铺入口\n👉suo.im/cZi4k\n"
 
 CUSTOM_MSG = "\n\n🍲回家地道湖南菜（宁波店）\n✨会员🈵20🉐15\n\n🦆栖头鸭·鸭脖卤味（宁波鼓楼店）\n✨会员🈵20🉐15\n\n🍗大熊炸鸡（城隍庙步行街店）\n✨会员🈵15🉐12\n\n🍸LINLEE·林里手打柠檬茶\n✨会员🈵15🉐13\n\n🐔正新鸡排\n✨会员🈵20🉐10\n"
 
