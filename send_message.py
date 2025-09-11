@@ -123,7 +123,8 @@ DELIM = [
     "💮-—🏮•̀֊•́🏮—-💮",
 ]
 
-LINK = "\n点击链接选店啵\n👉suo.im/cZi4k\n"
+# LINK = "\n点击链接选店啵\n👉suo.im/cZi4k\n"
+LINK = "\n点击链接领各大平台红包啵\n👉ourl.cn/9EKZ9U\n"
 
 ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信 麦麦 免费领取7️⃣天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
 
