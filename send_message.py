@@ -128,7 +128,7 @@ LINK = "\n点击链接领各大平台红包啵\n👉ourl.cn/9EKZ9U\n"
 
 ACTIVITY = "\n更多优惠戳↓\n㊙新用户私信 麦麦 免费领取7️⃣天会员\n\n📝邀请好友进群，可🉐麦粒💰，详询客服💁‍"
 
-MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/N4IxkGyz\n『饿了么🧧』链接\n👉u.ele.me/CIdAfDY8\n『歪麦』店铺入口\n👉suo.im/cZi4k\n"
+MSG_HOLIDAY = "\n\n『美团🧧』链接\n👉dpurl.cn/eSI5UoAz\n『饿了么🧧』链接\n👉u.ele.me/od2EZMEF\n『歪麦』店铺入口\n👉suo.im/cZi4k\n"
 
 CUSTOM_MSG = "\n\n🍲回家地道湖南菜（宁波店）\n✨会员🈵20🉐15\n\n🦆栖头鸭·鸭脖卤味（宁波鼓楼店）\n✨会员🈵20🉐15\n\n🍗大熊炸鸡（城隍庙步行街店）\n✨会员🈵15🉐12\n\n🍸LINLEE·林里手打柠檬茶\n✨会员🈵15🉐13\n\n🐔正新鸡排\n✨会员🈵20🉐10\n"
 
@@ -467,13 +467,50 @@ def push_activity_51() -> None:
         filepath = [pic_files / "51.jpg"]
         push_msg(msg_list, filepath)
 
+def push_default_dinner() -> None:
+    """
+    推送默认消息
+    :return:
+    """
+    msg_list = [
+        random.choice(DINNER_TITLE)
+        + MSG_HOLIDAY
+        + random.choice(DELIM)
+        # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+        # + "\n记得及时去提交订单哦！"
+        + "\n"
+        + ACTIVITY
+        + redeem_code()
+    ]
+    filepath = [random_image_path(pic_files / "dinner")]
+    push_msg(msg_list, filepath)
+
+def push_default_afternoon() -> None:
+    """
+    推送默认消息
+    :return:
+    """
+    msg_list = [
+        random.choice(DINNER_TITLE)
+        + MSG_HOLIDAY
+        + random.choice(DELIM)
+        # + "\n📢放假期间，群内无值班人员哦~有事🉑app在线联系客服或致电：6url.cn/u7DXRx【4008275517】"
+        # + "\n记得及时去提交订单哦！"
+        + "\n"
+        + ACTIVITY
+        + redeem_code()
+    ]
+    filepath = [random_image_path(pic_files / "afternoon")]
+    push_msg(msg_list, filepath)
 
 if __name__ == "__main__":
 
     # push_breakfast()
     # push_dinner()
     # push_dinner_1()
+    # push_default_dinner()
     # push_afternoon()
+    # push_default_afternoon()
     # push_snack()
     # push_activity()
     # push_activity_newyear()
@@ -483,11 +520,14 @@ if __name__ == "__main__":
     # schedule.every().day.at("08:00:00").do(push_breakfast)
     # schedule.every().day.at("09:25:00").do(push_activity_newyear)
     # schedule.every().day.at("09:25:00").do(push_activity_51)
-    schedule.every().day.at("10:15:00").do(push_dinner)
+    # schedule.every().day.at("10:15:00").do(push_dinner)
+    schedule.every().day.at("10:15:00").do(push_default_dinner)
     # schedule.every().day.at("10:15:00").do(push_dinner_1)
     # schedule.every().day.at("10:30:00").do(push_activity)
-    schedule.every().day.at("13:30:00").do(push_afternoon)
-    schedule.every().day.at("16:45:00").do(push_dinner)
+    # schedule.every().day.at("13:30:00").do(push_afternoon)
+    schedule.every().day.at("13:30:00").do(push_default_afternoon)
+    # schedule.every().day.at("16:45:00").do(push_dinner)
+    schedule.every().day.at("16:45:00").do(push_default_dinner)
     # schedule.every().day.at("17:00:00").do(push_dinner_1)
     # schedule.every().day.at("16:00:00").do(push_activity_51)
     # schedule.every().day.at("17:00:00").do(push_activity)
